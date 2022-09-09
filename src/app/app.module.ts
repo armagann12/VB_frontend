@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UserInfoComponent } from './components/user-info/user-info.component';
+import { KurumInfoComponent } from './components/kurum-info/kurum-info.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { UserInfoComponent } from './components/user-info/user-info.component';
     RegisterComponent,
     LoginComponent,
     KurumComponent,
-    UserInfoComponent
+    UserInfoComponent,
+    KurumInfoComponent
   ],
   imports: [
     BrowserModule,
