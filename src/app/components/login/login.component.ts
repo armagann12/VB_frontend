@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -10,28 +12,40 @@ export class LoginComponent implements OnInit {
   userLoginPassword: any;
   kurumLoginMail: any;
   kurumLoginPassword: any;
+  data: any[] | undefined;
 
-  constructor() { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
   onUserLoginSubmit() {
-    const obj = {
-      mail:this.userLoginMail,
-      password: this.userLoginPassword,
+    const mail = this.userLoginMail
+    const password = this.userLoginPassword
+    if (localStorage.getItem("token") !== null) {
+      alert("You are logged in")
+    } else {
+      this.authService.userLogin(mail, password).subscribe((res: any) => {
+        console.log(res, "User başarıyla girdi.")
+        localStorage.setItem("token", res)
+        this.router.navigate(['user']);
+      })
     }
-    console.log(obj)
-    return this.userLoginMail
   }
 
   onKurumLoginSubmit() {
-    const obj = {
-      mail:this.kurumLoginMail,
-      password: this.kurumLoginPassword,
+    const mail = this.kurumLoginMail
+    const password = this.kurumLoginPassword
+
+    if (localStorage.getItem("token") !== null) {
+      alert("You are logged in")
+    } else {
+      this.authService.kurumLogin(mail, password).subscribe((res: any) => {
+        console.log(res, "Kurum başarıyla girdi.")
+        localStorage.setItem("token", res)
+        this.router.navigate(['kurum']);
+      })
     }
-    console.log(obj)
-    return this.kurumLoginMail
   }
 
 }

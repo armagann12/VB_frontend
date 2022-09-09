@@ -15,7 +15,8 @@ const routes: Routes = [
   }  },
   { path: 'user', component: UserComponent, canActivate:[RoleGuard], data: { 
     expectedRole: 'User'
-  }  }
+  }  },
+  {path: '**', component: LoginComponent}
 ];
 
 @NgModule({
