@@ -5,12 +5,17 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { UserComponent } from './components/user/user.component';
 import { AuthGuardService as AuthGuard } from './services/auth-guard.service';
+import { RoleGuardService as RoleGuard } from './services/role-guard.service';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'kurum', component: KurumComponent, canActivate:[AuthGuard] },
-  { path: 'user', component: UserComponent, canActivate:[AuthGuard] }
+  { path: 'kurum', component: KurumComponent, canActivate:[RoleGuard], data: { 
+    expectedRole: 'Institution'
+  }  },
+  { path: 'user', component: UserComponent, canActivate:[RoleGuard], data: { 
+    expectedRole: 'User'
+  }  }
 ];
 
 @NgModule({
