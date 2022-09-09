@@ -15,6 +15,8 @@ import { UserKurumComponent } from './components/user-kurum/user-kurum.component
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { KurumFaturaComponent } from './components/kurum-fatura/kurum-fatura.component';
+import { KurumUserComponent } from './components/kurum-user/kurum-user.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     UserInfoComponent,
     KurumInfoComponent,
     UserFaturaComponent,
-    UserKurumComponent
+    UserKurumComponent,
+    KurumFaturaComponent,
+    KurumUserComponent
   ],
   imports: [
     BrowserModule,

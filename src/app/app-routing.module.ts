@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { KurumFaturaComponent } from './components/kurum-fatura/kurum-fatura.component';
 import { KurumInfoComponent } from './components/kurum-info/kurum-info.component';
+import { KurumUserComponent } from './components/kurum-user/kurum-user.component';
 import { KurumComponent } from './components/kurum/kurum.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
@@ -18,7 +20,9 @@ const routes: Routes = [
     path: 'kurum', component: KurumComponent, canActivate: [RoleGuard], data: {
       expectedRole: 'Institution'
     }, children: [
-      { path: 'info', component: KurumInfoComponent }
+      { path: 'info', component: KurumInfoComponent },
+      { path: 'fatura', component: KurumFaturaComponent },
+      { path: 'user', component: KurumUserComponent }
     ]
   },
   {
