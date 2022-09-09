@@ -17,8 +17,19 @@ export class KurumService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
     }
-    
+
     const req = this.httpClient.get(this.SERVER + 'institution/me', { headers: headers})
+    return req
+  }
+
+  public getAllUsers() {
+    const token = localStorage.getItem("token")
+
+    const headers: any ={
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    }
+    const req = this.httpClient.get(this.SERVER + 'user', { headers: headers})
     return req
   }
 }

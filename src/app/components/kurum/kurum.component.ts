@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { KurumService } from 'src/app/services/kurum.service';
 
 @Component({
   selector: 'app-kurum',
@@ -8,9 +9,12 @@ import { Router } from '@angular/router';
 })
 export class KurumComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private kurumService: KurumService) { }
 
   ngOnInit(): void {
+    this.kurumService.getAllUsers().subscribe((res) => {
+      console.log(res)
+    })
   }
   logout(){
     console.log("You are Logging Out")
