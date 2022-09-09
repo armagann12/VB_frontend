@@ -10,6 +10,11 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UserInfoComponent } from './components/user-info/user-info.component';
 import { KurumInfoComponent } from './components/kurum-info/kurum-info.component';
+import { UserFaturaComponent } from './components/user-fatura/user-fatura.component';
+import { UserKurumComponent } from './components/user-kurum/user-kurum.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatButtonModule} from '@angular/material/button';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -19,13 +24,18 @@ import { KurumInfoComponent } from './components/kurum-info/kurum-info.component
     LoginComponent,
     KurumComponent,
     UserInfoComponent,
-    KurumInfoComponent
+    KurumInfoComponent,
+    UserFaturaComponent,
+    UserKurumComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]

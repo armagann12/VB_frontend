@@ -8,7 +8,7 @@
     <input type="number" name="tc" id="tc" placeholder="Add tc" [(ngModel)]="tc">
     <input type="email" name="mail" id="userMail" placeholder="Add mail" [(ngModel)]="userRegisterMail">
     <input type="password" name="password" id="userPassword" placeholder="Add password" [(ngModel)]="userRegisterPassword">
-    <button type="submit" >Register</button>
+    <button type="submit" mat-button class="bg-blue-500">Register</button>
  </form>
 
 <h2>Kurum Register</h2>
@@ -18,7 +18,7 @@
     <input type="text" name="detail" id="detail" placeholder="Add detail" [(ngModel)]="detail">
     <input type="email" name="mail" id="kurumMail" placeholder="Add mail" [(ngModel)]="kurumRegisterMail">
     <input type="password" name="kurumPassword" id="password" placeholder="Add password" [(ngModel)]="kurumRegisterPassword">
-    <button type="submit" >Register</button>
+    <button type="submit" mat-button class="bg-blue-500">Register</button>
  </form>
 
- <button (click)="loginNav()" >Login</button>
+ <button (click)="loginNav()" mat-button class="bg-yellow-500">Login</button>

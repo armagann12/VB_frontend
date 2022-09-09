@@ -4,7 +4,9 @@ import { KurumInfoComponent } from './components/kurum-info/kurum-info.component
 import { KurumComponent } from './components/kurum/kurum.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { UserFaturaComponent } from './components/user-fatura/user-fatura.component';
 import { UserInfoComponent } from './components/user-info/user-info.component';
+import { UserKurumComponent } from './components/user-kurum/user-kurum.component';
 import { UserComponent } from './components/user/user.component';
 import { AuthGuardService as AuthGuard } from './services/auth-guard.service';
 import { RoleGuardService as RoleGuard } from './services/role-guard.service';
@@ -15,15 +17,17 @@ const routes: Routes = [
   {
     path: 'kurum', component: KurumComponent, canActivate: [RoleGuard], data: {
       expectedRole: 'Institution'
-    }, children:[
-      {path:'info', component: KurumInfoComponent  }
+    }, children: [
+      { path: 'info', component: KurumInfoComponent }
     ]
   },
   {
     path: 'user', component: UserComponent, canActivate: [RoleGuard], data: {
       expectedRole: 'User'
-    }, children:[
-      {path:'info', component: UserInfoComponent  }
+    }, children: [
+      { path: 'info', component: UserInfoComponent },
+      { path: 'fatura', component: UserFaturaComponent },
+      { path: 'kurum', component: UserKurumComponent }
     ]
   },
   { path: '**', component: LoginComponent }
