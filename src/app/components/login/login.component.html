@@ -1,2 +1,17 @@
-<p>login works!</p>
-<h2>Hello</h2>
+<h1>Login</h1>
+
+<h2>User Login</h2>
+
+<form (submit)="onUserLoginSubmit()">
+    <input type="email" name="mail" id="mail" placeholder="Add mail" [(ngModel)]="userLoginMail">
+    <input type="password" name="password" id="password" placeholder="Add password" [(ngModel)]="userLoginPassword">
+    <button type="submit" >Login</button>
+</form>
+
+<h2>Kurum Login</h2>
+
+<form (submit)="onKurumLoginSubmit()">
+    <input type="email" name="mail" id="mail" placeholder="Add mail" [(ngModel)]="kurumLoginMail">
+    <input type="password" name="password" id="password" placeholder="Add password" [(ngModel)]="kurumLoginPassword">
+    <button type="submit" >Login</button>
+</form>

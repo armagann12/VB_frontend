@@ -1,1 +1,22 @@
-<p>register works!</p>
+<h1>Register</h1>
+
+<h2>User Register</h2>
+
+<form (submit)="onUserSubmit()">
+    <input type="text" name="firstName" id="firstName" placeholder="Add firstName" [(ngModel)]="firstName">
+    <input type="text" name="lastName" id="lastName" placeholder="Add lastName" [(ngModel)]="lastName">
+    <input type="number" name="tc" id="tc" placeholder="Add tc" [(ngModel)]="tc">
+    <input type="email" name="mail" id="userMail" placeholder="Add mail" [(ngModel)]="userRegisterMail">
+    <input type="password" name="password" id="userPassword" placeholder="Add password" [(ngModel)]="userRegisterPassword">
+    <button type="submit" >Register</button>
+ </form>
+
+<h2>Kurum Register</h2>
+
+<form (submit)="onKurumSubmit()">
+    <input type="text" name="name" id="name" placeholder="Add name" [(ngModel)]="name">
+    <input type="text" name="detail" id="detail" placeholder="Add detail" [(ngModel)]="detail">
+    <input type="email" name="mail" id="kurumMail" placeholder="Add mail" [(ngModel)]="kurumRegisterMail">
+    <input type="password" name="kurumPassword" id="password" placeholder="Add password" [(ngModel)]="kurumRegisterPassword">
+    <button type="submit" >Register</button>
+ </form>
