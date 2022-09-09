@@ -35,6 +35,12 @@ export class KurumComponent implements OnInit {
       console.log(res)
     })
     */
+   /*
+    const num = "8"
+    this.invoiceService.deleteInvoice(num).subscribe((res) => {
+      console.log(res)
+    })
+    */
   }
   logout() {
     console.log("You are Logging Out")

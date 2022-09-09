@@ -33,6 +33,12 @@ export class UserComponent implements OnInit {
       console.log(res)
     })
     */
+   /*
+   const num = "4"
+    this.invoiceService.payInvoice(num).subscribe((res) => {
+      console.log(res)
+    })
+    */
   }
 
   logout() {

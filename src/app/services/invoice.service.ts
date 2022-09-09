@@ -21,8 +21,7 @@ export class InvoiceService {
     return req
   }
 
-  public getUserInvoices(id:string) {
-    //Status true false var
+  public getUserInvoice(id:string) {
     const token = localStorage.getItem("token")
 
     const headers: any = {
@@ -45,8 +44,7 @@ export class InvoiceService {
     return req
   }
 
-  public getKurumInvoices(id:string) {
-    //Status true false var
+  public getKurumInvoice(id:string) {
     const token = localStorage.getItem("token")
 
     const headers: any = {
@@ -54,6 +52,28 @@ export class InvoiceService {
       'Authorization': `Bearer ${token}`
     }
     const req = this.httpClient.get(this.SERVER + `invoice/institution/${id}`, { headers: headers })
+    return req
+  }
+
+  public deleteInvoice(id:string) {
+    const token = localStorage.getItem("token")
+
+    const headers: any = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    }
+    const req = this.httpClient.delete(this.SERVER + `invoice/me/${id}`, { headers: headers })
+    return req
+  }
+
+  public payInvoice(id:string) {
+    const token = localStorage.getItem("token")
+
+    const headers: any = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    }
+    const req = this.httpClient.get(this.SERVER + `invoice/pay/${id}`, { headers: headers })
     return req
   }
 }
