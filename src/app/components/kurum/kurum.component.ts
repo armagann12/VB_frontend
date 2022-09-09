@@ -12,7 +12,13 @@ export class KurumComponent implements OnInit {
   constructor(private router: Router, private kurumService: KurumService) { }
 
   ngOnInit(): void {
+    /*
     this.kurumService.getAllUsers().subscribe((res) => {
+      console.log(res)
+    })
+    */
+    const num = "9"
+    this.kurumService.getUser(num).subscribe((res) => {
       console.log(res)
     })
   }

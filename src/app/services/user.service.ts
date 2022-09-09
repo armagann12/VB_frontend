@@ -31,4 +31,15 @@ export class UserService {
     const req = this.httpClient.get(this.SERVER + 'institution', { headers: headers})
     return req
   }
+
+  public getKurum(id: string) {  
+    const token = localStorage.getItem("token")
+
+    const headers: any ={
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    }
+    const req = this.httpClient.get(this.SERVER + `institution/${id}`, { headers: headers})
+    return req
+  }
 }

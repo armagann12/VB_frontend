@@ -12,12 +12,18 @@ export class UserComponent implements OnInit {
   constructor(private router: Router, private userService: UserService) { }
 
   ngOnInit(): void {
+    /*
     this.userService.getAllKurum().subscribe((res) =>{
+      console.log(res)
+    })
+    */
+    const num = "3"
+    this.userService.getKurum(num).subscribe((res) => {
       console.log(res)
     })
   }
 
-  logout(){
+  logout() {
     console.log("You are Logging Out")
     localStorage.removeItem("token")
     this.router.navigate(['login']);
