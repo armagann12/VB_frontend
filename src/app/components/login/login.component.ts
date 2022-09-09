@@ -19,6 +19,10 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  registerNav(){
+    this.router.navigate(['register']);
+  }
+
   onUserLoginSubmit() {
     const mail = this.userLoginMail
     const password = this.userLoginPassword

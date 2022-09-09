@@ -29,7 +29,7 @@ export class AuthService {
       mail,
       password
     }
-    const req = this.httpClient.post('https://localhost:7178/api/auth/user/login', body, { responseType: 'text' })
+    const req = this.httpClient.post(this.SERVER + 'user/login', body, { responseType: 'text' })
     return req
   }
 
@@ -39,6 +39,29 @@ export class AuthService {
       password
     }
     const req = this.httpClient.post(this.SERVER + "institution/login", body, { responseType: 'text' })
+    return req
+  }
+
+  public userRegister(mail: any, password: any, firstName: any, lastName: any, tc:any){
+    const body = {
+      mail,
+      password,
+      firstName,
+      lastName,
+      tc
+    }
+    const req = this.httpClient.post(this.SERVER + "user/register", body, { responseType: 'text' })
+    return req
+  }
+
+  public kurumRegister(mail: any, password: any, name: any, detail: any){
+    const body = {
+      mail,
+      password,
+      name,
+      detail
+    }
+    const req = this.httpClient.post(this.SERVER + "institution/register", body, { responseType: 'text' })
     return req
   }
 }

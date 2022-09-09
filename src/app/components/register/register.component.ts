@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -17,33 +19,41 @@ export class RegisterComponent implements OnInit {
   name: any;
   detail: any;
 
-  constructor() {}
+  constructor(private router: Router, private authService: AuthService) { }
 
-  
   ngOnInit(): void {
   }
 
+  loginNav(){
+    this.router.navigate(['login']);
+  }
+
+
   onUserSubmit() {
-    const userObj = {
-      mail:this.userRegisterMail,
-      password: this.userRegisterPassword,
-      firstName: this.firstName,
-      lastName:this.lastName,
-      tc: this.tc
-    }
-    console.log(userObj)
-    return this.userRegisterMail
+    this.authService.userRegister(this.userRegisterMail,
+      this.userRegisterPassword,
+      this.firstName,
+      this.lastName,
+      this.tc
+    ).subscribe((res) => {
+      console.log(res, "Başarıyla kaydedildi")
+      this.router.navigate(['login']);
+    })
   }
 
   onKurumSubmit() {
-    const kurumObj = {
-      mail:this.kurumRegisterMail,
-      password: this.kurumRegisterMail,
-      name: this.name,
-      detail :this.detail,
-    }
-    console.log(kurumObj)
-    return this.kurumRegisterMail
+    console.log(this.kurumRegisterMail,
+      this.kurumRegisterPassword,
+      this.name,
+      this.detail)
+    this.authService.kurumRegister(this.kurumRegisterMail,
+      this.kurumRegisterPassword,
+      this.name,
+      this.detail
+    ).subscribe((res) => {
+      console.log(res, "Başarıyla kaydedildi")
+      this.router.navigate(['login']);
+    })
   }
 
 }
