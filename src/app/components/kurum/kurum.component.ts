@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { InvoiceService } from 'src/app/services/invoice.service';
 import { KurumService } from 'src/app/services/kurum.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { KurumService } from 'src/app/services/kurum.service';
 })
 export class KurumComponent implements OnInit {
 
-  constructor(private router: Router, private kurumService: KurumService) { }
+  constructor(private router: Router, private kurumService: KurumService, private invoiceService: InvoiceService) { }
 
   ngOnInit(): void {
     /*
@@ -17,12 +18,25 @@ export class KurumComponent implements OnInit {
       console.log(res)
     })
     */
-    const num = "9"
-    this.kurumService.getUser(num).subscribe((res) => {
+    /*
+     const num = "9"
+     this.kurumService.getUser(num).subscribe((res) => {
+       console.log(res)
+     })
+     */
+    /*
+    this.invoiceService.getAllKurumInvoices().subscribe((res) => {
       console.log(res)
     })
+    */
+   /*
+    const num = "8"
+    this.invoiceService.getKurumInvoices(num).subscribe((res) => {
+      console.log(res)
+    })
+    */
   }
-  logout(){
+  logout() {
     console.log("You are Logging Out")
     localStorage.removeItem("token")
     this.router.navigate(['login']);
