@@ -1,24 +1,32 @@
-<h1>Register</h1>
+<div class="flex space-x-2">
+    <a (click)="isUserFunc()">User Register</a>
+    <a (click)="isKurumFunc()">Kurum Register</a>
+</div>
 
-<h2>User Register</h2>
+<div *ngIf="isUser">
+    <h2>User Register</h2>
+    <form (submit)="onUserSubmit()">
+        <input type="text" name="firstName" id="firstName" placeholder="Add firstName" [(ngModel)]="firstName">
+        <input type="text" name="lastName" id="lastName" placeholder="Add lastName" [(ngModel)]="lastName">
+        <input type="number" name="tc" id="tc" placeholder="Add tc" [(ngModel)]="tc">
+        <input type="email" name="mail" id="userMail" placeholder="Add mail" [(ngModel)]="userRegisterMail">
+        <input type="password" name="password" id="userPassword" placeholder="Add password"
+            [(ngModel)]="userRegisterPassword">
+        <button type="submit" mat-button class="bg-blue-500">Register</button>
+    </form>
+</div>
 
-<form (submit)="onUserSubmit()">
-    <input type="text" name="firstName" id="firstName" placeholder="Add firstName" [(ngModel)]="firstName">
-    <input type="text" name="lastName" id="lastName" placeholder="Add lastName" [(ngModel)]="lastName">
-    <input type="number" name="tc" id="tc" placeholder="Add tc" [(ngModel)]="tc">
-    <input type="email" name="mail" id="userMail" placeholder="Add mail" [(ngModel)]="userRegisterMail">
-    <input type="password" name="password" id="userPassword" placeholder="Add password" [(ngModel)]="userRegisterPassword">
-    <button type="submit" mat-button class="bg-blue-500">Register</button>
- </form>
+<div *ngIf="!isUser">
+    <h2>Kurum Register</h2>
 
-<h2>Kurum Register</h2>
+    <form (submit)="onKurumSubmit()">
+        <input type="text" name="name" id="name" placeholder="Add name" [(ngModel)]="name">
+        <input type="text" name="detail" id="detail" placeholder="Add detail" [(ngModel)]="detail">
+        <input type="email" name="mail" id="kurumMail" placeholder="Add mail" [(ngModel)]="kurumRegisterMail">
+        <input type="password" name="kurumPassword" id="password" placeholder="Add password"
+            [(ngModel)]="kurumRegisterPassword">
+        <button type="submit" mat-button class="bg-blue-500">Register</button>
+    </form>
 
-<form (submit)="onKurumSubmit()">
-    <input type="text" name="name" id="name" placeholder="Add name" [(ngModel)]="name">
-    <input type="text" name="detail" id="detail" placeholder="Add detail" [(ngModel)]="detail">
-    <input type="email" name="mail" id="kurumMail" placeholder="Add mail" [(ngModel)]="kurumRegisterMail">
-    <input type="password" name="kurumPassword" id="password" placeholder="Add password" [(ngModel)]="kurumRegisterPassword">
-    <button type="submit" mat-button class="bg-blue-500">Register</button>
- </form>
-
- <button (click)="loginNav()" mat-button class="bg-yellow-500">Login</button>
+</div>
+<button (click)="loginNav()" mat-button class="bg-yellow-500">Login</button>

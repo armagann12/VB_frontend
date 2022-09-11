@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
   kurumLoginMail: any;
   kurumLoginPassword: any;
   data: any[] | undefined;
+  isUser: boolean = true;
 
   constructor(private authService: AuthService, private router: Router) { }
 
@@ -50,6 +51,17 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['kurum']);
       })
     }
+
   }
+    isUserFunc(){
+      if(this.isUser === false){
+        this.isUser = true
+      }
+    }
+    isKurumFunc(){
+      if(this.isUser === true){
+        this.isUser = false
+      }
+    }
 
 }

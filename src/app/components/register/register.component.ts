@@ -19,6 +19,8 @@ export class RegisterComponent implements OnInit {
   name: any;
   detail: any;
 
+  isUser: boolean = true;
+
   constructor(private router: Router, private authService: AuthService) { }
 
   ngOnInit(): void {
@@ -54,6 +56,17 @@ export class RegisterComponent implements OnInit {
       console.log(res, "Başarıyla kaydedildi")
       this.router.navigate(['login']);
     })
+  }
+
+  isUserFunc(){
+    if(this.isUser === false){
+      this.isUser = true
+    }
+  }
+  isKurumFunc(){
+    if(this.isUser === true){
+      this.isUser = false
+    }
   }
 
 }

@@ -1,20 +1,28 @@
-<h1>Login</h1>
+<div class="flex space-x-2">
+    <a (click)="isUserFunc()">User Login</a>
+    <a (click)="isKurumFunc()">Kurum Login</a>
+</div>
+<div *ngIf="isUser">
+    <form (submit)="onUserLoginSubmit()">
+        <div class="grid-flow-col">
+            <h1>This is User</h1>
+            <input type="email" name="mail" id="userLmail" placeholder="Add mail" [(ngModel)]="userLoginMail">
+            <input type="password" name="password" id="userLpassword" placeholder="Add password"
+                [(ngModel)]="userLoginPassword">
+            <button type="submit" mat-button class="bg-blue-500">Login</button>
+        </div>
+    </form>
+</div>
+<div *ngIf="!isUser">
+    <form (submit)="onKurumLoginSubmit()">
+        <h1>This is Kurum</h1>
+        <input type="email" name="mail" id="kurumLmail" placeholder="Add mail" [(ngModel)]="kurumLoginMail">
+        <input type="password" name="password" id="kurumLpassword" placeholder="Add password"
+            [(ngModel)]="kurumLoginPassword">
+        <button type="submit" mat-button class="bg-blue-500">Login</button>
+    </form>
+</div>
 
-<h2>User Login</h2>
-
-<form (submit)="onUserLoginSubmit()">
-        <input type="email" name="mail" id="userLmail" placeholder="Add mail" [(ngModel)]="userLoginMail" >
-        <input type="password" name="password" id="userLpassword" placeholder="Add password" [(ngModel)]="userLoginPassword"    >
-        <button type="submit" mat-button class="bg-blue-500" >Login</button>
-</form>
-
-<h2>Kurum Login</h2>
-
-<form (submit)="onKurumLoginSubmit()">
-    <input type="email" name="mail" id="kurumLmail" placeholder="Add mail" [(ngModel)]="kurumLoginMail">
-    <input type="password" name="password" id="kurumLpassword" placeholder="Add password" [(ngModel)]="kurumLoginPassword">
-    <button type="submit" mat-button class="bg-blue-500">Login</button>
-</form>
 
 
 <button (click)="registerNav()" mat-button class="bg-yellow-500">Register</button>
