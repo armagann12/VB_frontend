@@ -10,41 +10,22 @@ import { KurumService } from 'src/app/services/kurum.service';
 })
 export class KurumComponent implements OnInit {
 
+  fatura: any = 'fatura'
+  user: any = 'user'
+  info: any = 'info'
+
   constructor(private router: Router, private kurumService: KurumService, private invoiceService: InvoiceService) { }
 
   ngOnInit(): void {
-    /*
-    this.kurumService.getAllUsers().subscribe((res) => {
-      console.log(res)
-    })
-    */
-    /*
-     const num = "9"
-     this.kurumService.getUser(num).subscribe((res) => {
-       console.log(res)
-     })
-     */
-    /*
-    this.invoiceService.getAllKurumInvoices().subscribe((res) => {
-      console.log(res)
-    })
-    */
-   /*
-    const num = "8"
-    this.invoiceService.getKurumInvoices(num).subscribe((res) => {
-      console.log(res)
-    })
-    */
-   /*
-    const num = "8"
-    this.invoiceService.deleteInvoice(num).subscribe((res) => {
-      console.log(res)
-    })
-    */
+    
   }
   logout() {
     console.log("You are Logging Out")
     localStorage.removeItem("token")
     this.router.navigate(['login']);
+  }
+
+  navigate(event:any, item:any){
+    this.router.navigate([`kurum/${item}`]);
   }
 }

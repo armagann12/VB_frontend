@@ -1,1 +1,11 @@
-<p>kurum-info works!</p>
+<mat-toolbar>
+    <span class="m-auto">Info</span>
+    <button mat-button (click)="logout()" class="bg-red-500">Logout</button>
+</mat-toolbar>
+
+<div *ngIf="data">
+    <h2>Firstname: {{data.name}}</h2>
+    <h2>Mail: {{data.mail}}</h2>
+    <h2>Detail: {{data.detail}}</h2>
+</div>
+

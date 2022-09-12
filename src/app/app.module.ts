@@ -19,6 +19,14 @@ import { KurumFaturaComponent } from './components/kurum-fatura/kurum-fatura.com
 import { KurumUserComponent } from './components/kurum-user/kurum-user.component';
 import { MatCardModule } from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatListModule} from '@angular/material/list';
+import {MatTableModule} from '@angular/material/table';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatSelectModule} from '@angular/material/select';
+
+
 
 @NgModule({
   declarations: [
@@ -44,7 +52,13 @@ import {MatInputModule} from '@angular/material/input';
     MatButtonModule,
     MatFormFieldModule,
     MatCardModule,
-    MatInputModule  
+    MatInputModule,
+    MatToolbarModule,
+    MatDividerModule,
+    MatListModule,
+    MatTableModule,
+    MatButtonToggleModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

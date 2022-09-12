@@ -1,5 +1,18 @@
-<p>kurum works!</p>
-
-<button mat-button (click)="logout()" class="bg-red-500">Logout</button>
-
-<router-outlet></router-outlet>
+<div class="h-full">
+    <div class="w-1/4 absolute bg-yellow-200 h-full">
+        <div>
+            <mat-list>
+                <mat-list-item (click)="navigate($event, fatura)" class="cursor-pointer hover:shadow-md">Faturalarım</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item (click)="navigate($event, user)" class="cursor-pointer hover:shadow-md">Müşteriler</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item (click)="navigate($event, info)" class="cursor-pointer hover:shadow-md">Info </mat-list-item>
+            </mat-list>
+        </div>
+    </div>
+    <div class="ml-[25%] h-full">
+        <div>
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>
