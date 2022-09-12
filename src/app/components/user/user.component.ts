@@ -46,4 +46,13 @@ export class UserComponent implements OnInit {
     localStorage.removeItem("token")
     this.router.navigate(['login']);
   }
+
+  navigateFatura(){
+    this.router.navigate(['user/fatura']);
+  }
+  navigateKurum(){
+    this.router.navigate(['user/kurum']);
+  }
+  navigateInfo(){
+    this.router.navigate(['user/info']);  }
 }
