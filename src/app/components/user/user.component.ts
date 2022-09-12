@@ -9,36 +9,14 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
+  fatura: any = "fatura";
+  info: any = "info";
+  kurum: any = "kurum";
 
   constructor(private router: Router, private userService: UserService, private invoiceService: InvoiceService) { }
 
   ngOnInit(): void {
-    /*
-    this.userService.getAllKurum().subscribe((res) =>{
-      console.log(res)
-    })
-    */
-    /*
-     const num = "3"
-     this.userService.getKurum(num).subscribe((res) => {
-       console.log(res)
-     })
-     */
-    /*
-    this.invoiceService.getAllUsersInvoices().subscribe((res) => {
-      console.log(res)
-    })
-    const num = "8"
-    this.invoiceService.getUserInvoices(num).subscribe((res) => {
-      console.log(res)
-    })
-    */
-   /*
-   const num = "4"
-    this.invoiceService.payInvoice(num).subscribe((res) => {
-      console.log(res)
-    })
-    */
+  
   }
 
   logout() {
@@ -47,12 +25,7 @@ export class UserComponent implements OnInit {
     this.router.navigate(['login']);
   }
 
-  navigateFatura(){
-    this.router.navigate(['user/fatura']);
+  navigate(event:any, item: any){
+    this.router.navigate([`user/${item}`]);
   }
-  navigateKurum(){
-    this.router.navigate(['user/kurum']);
-  }
-  navigateInfo(){
-    this.router.navigate(['user/info']);  }
 }
