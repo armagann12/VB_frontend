@@ -68,5 +68,7 @@ export class RegisterComponent implements OnInit {
       this.isUser = false
     }
   }
-
+  getUrl() {
+    return "url('https://t3.ftcdn.net/jpg/02/94/27/70/360_F_294277006_pFDh10OfLuej79sFedbidqrmtYImSeu8.jpg')";
+  }
 }

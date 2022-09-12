@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  registerNav(){
+  registerNav() {
     this.router.navigate(['register']);
   }
 
@@ -53,15 +53,19 @@ export class LoginComponent implements OnInit {
     }
 
   }
-    isUserFunc(){
-      if(this.isUser === false){
-        this.isUser = true
-      }
+  isUserFunc() {
+    if (this.isUser === false) {
+      this.isUser = true
     }
-    isKurumFunc(){
-      if(this.isUser === true){
-        this.isUser = false
-      }
+  }
+  isKurumFunc() {
+    if (this.isUser === true) {
+      this.isUser = false
     }
+  }
+
+  getUrl() {
+    return "url('https://t3.ftcdn.net/jpg/02/94/27/70/360_F_294277006_pFDh10OfLuej79sFedbidqrmtYImSeu8.jpg')";
+  }
 
 }

@@ -13,10 +13,12 @@ import { KurumInfoComponent } from './components/kurum-info/kurum-info.component
 import { UserFaturaComponent } from './components/user-fatura/user-fatura.component';
 import { UserKurumComponent } from './components/user-kurum/user-kurum.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatButtonModule} from '@angular/material/button';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { KurumFaturaComponent } from './components/kurum-fatura/kurum-fatura.component';
 import { KurumUserComponent } from './components/kurum-user/kurum-user.component';
+import { MatCardModule } from '@angular/material/card';
+import {MatInputModule} from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { KurumUserComponent } from './components/kurum-user/kurum-user.component
     UserFaturaComponent,
     UserKurumComponent,
     KurumFaturaComponent,
-    KurumUserComponent
+    KurumUserComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -39,7 +42,9 @@ import { KurumUserComponent } from './components/kurum-user/kurum-user.component
     HttpClientModule,
     BrowserAnimationsModule,
     MatButtonModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatCardModule,
+    MatInputModule  
   ],
   providers: [],
   bootstrap: [AppComponent]
