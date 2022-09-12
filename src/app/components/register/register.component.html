@@ -1,7 +1,9 @@
 <div [ngStyle]="{'background-image': getUrl()}" class="h-full w-full">
     <div class="flex space-x-2">
-        <a class="underline cursor-pointer text-blue-600" (click)="isUserFunc()">User Register</a>
-        <a class="underline cursor-pointer text-blue-600" (click)="isKurumFunc()">Kurum Register</a>
+        <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+            <mat-button-toggle (click)="isUserFunc()" value="userL">User Register</mat-button-toggle>
+            <mat-button-toggle (click)="isKurumFunc()" value="kurumL">Kurum Register</mat-button-toggle>
+        </mat-button-toggle-group>
     </div>
     
     <div *ngIf="isUser" class="flex justify-center relative">
