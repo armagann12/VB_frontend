@@ -1,8 +1,11 @@
 <mat-toolbar>
   <span class="m-auto">Faturalarım</span>
-  <button mat-button (click)="logout()" class="bg-red-500">Logout</button>
+  <button mat-button (click)="logout()" class="bg-red-500">
+    Çıkış
+    <mat-icon aria-hidden="false" aria-label="Example logout icon" fontIcon="logout" class=""></mat-icon>
+  </button>
 </mat-toolbar>
-<div class="mt-4 text-end" >
+<div class="mt-4 text-end">
   <mat-form-field appearance="fill">
     <mat-label>Fatura Durumu</mat-label>
     <mat-select [(value)]="selected">
@@ -29,7 +32,18 @@
       <th mat-header-cell *matHeaderCellDef> Status </th>
       <td mat-cell *matCellDef="let element"> {{element.status}} </td>
     </ng-container>
-
+    <ng-container matColumnDef="icon">
+      <th mat-header-cell *matHeaderCellDef> Detay  </th>
+      <td mat-cell *matCellDef="let element">
+        <mat-icon (click)="invoiceDetail(element.id)" class="cursor-pointer" aria-hidden="false" aria-label="Example info icon" fontIcon="info"></mat-icon>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="pay">
+      <th mat-header-cell *matHeaderCellDef> Öde </th>
+      <td mat-cell *matCellDef="let element">
+        <mat-icon class="cursor-pointer" aria-hidden="false" aria-label="Example info icon" fontIcon="payments"></mat-icon>
+      </td>
+    </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>

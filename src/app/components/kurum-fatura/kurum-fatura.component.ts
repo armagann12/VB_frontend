@@ -18,7 +18,6 @@ export class KurumFaturaComponent implements OnInit {
 
   ngOnInit(): void {
     this.invoiceService.getAllKurumInvoices().subscribe((res) => {
-      console.log(res)
       this.initData = res
       this.currentData = this.initData
     })
@@ -34,7 +33,6 @@ export class KurumFaturaComponent implements OnInit {
   }
 
   logout() {
-    console.log("You are Logging Out")
     localStorage.removeItem("token")
     this.router.navigate(['login']);
   }

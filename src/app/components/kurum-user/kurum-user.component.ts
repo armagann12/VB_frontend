@@ -15,13 +15,11 @@ export class KurumUserComponent implements OnInit {
 
   ngOnInit(): void {
     this.kurumService.getAllUsers().subscribe((res) => {
-      console.log(res)
       this.data = res
     })
   }
 
   logout() {
-    console.log("You are Logging Out")
     localStorage.removeItem("token")
     this.router.navigate(['login']);
   }

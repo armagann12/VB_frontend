@@ -38,22 +38,16 @@ export class RegisterComponent implements OnInit {
       this.lastName,
       this.tc
     ).subscribe((res) => {
-      console.log(res, "Başarıyla kaydedildi")
       this.router.navigate(['login']);
     })
   }
 
   onKurumSubmit() {
-    console.log(this.kurumRegisterMail,
-      this.kurumRegisterPassword,
-      this.name,
-      this.detail)
     this.authService.kurumRegister(this.kurumRegisterMail,
       this.kurumRegisterPassword,
       this.name,
       this.detail
     ).subscribe((res) => {
-      console.log(res, "Başarıyla kaydedildi")
       this.router.navigate(['login']);
     })
   }

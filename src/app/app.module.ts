@@ -25,6 +25,7 @@ import {MatListModule} from '@angular/material/list';
 import {MatTableModule} from '@angular/material/table';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatSelectModule} from '@angular/material/select';
+import {MatIconModule} from '@angular/material/icon';
 
 
 
@@ -41,7 +42,7 @@ import {MatSelectModule} from '@angular/material/select';
     UserKurumComponent,
     KurumFaturaComponent,
     KurumUserComponent,
-
+    
   ],
   imports: [
     BrowserModule,
@@ -58,7 +59,8 @@ import {MatSelectModule} from '@angular/material/select';
     MatListModule,
     MatTableModule,
     MatButtonToggleModule,
-    MatSelectModule
+    MatSelectModule,
+    MatIconModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

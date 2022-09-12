@@ -14,12 +14,10 @@ export class UserInfoComponent implements OnInit {
 
   ngOnInit(): void {
     this.userService.getUser().subscribe((res) => {
-      console.log(res)
       this.data = res
     })
   }
   logout() {
-    console.log("You are Logging Out")
     localStorage.removeItem("token")
     this.router.navigate(['login']);
   }

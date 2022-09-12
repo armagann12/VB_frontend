@@ -20,7 +20,6 @@ export class KurumComponent implements OnInit {
     
   }
   logout() {
-    console.log("You are Logging Out")
     localStorage.removeItem("token")
     this.router.navigate(['login']);
   }

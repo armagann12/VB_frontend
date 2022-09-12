@@ -9,21 +9,24 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class UserKurumComponent implements OnInit {
   data: any;
-  displayedColumns: string[] = ['name', 'mail'];
+  displayedColumns: string[] = ['name', 'mail', 'icon'];
 
 
   constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
     this.userService.getAllKurum().subscribe((res) =>{
-      console.log(res)
       this.data = res
     })
   }
   logout() {
-    console.log("You are Logging Out")
     localStorage.removeItem("token")
     this.router.navigate(['login']);
+  }
+  invoiceDetail(id: any){
+    this.userService.getKurum(id).subscribe((res) =>{
+      console.log(res)
+    })
   }
 
 }

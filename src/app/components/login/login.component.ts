@@ -31,7 +31,6 @@ export class LoginComponent implements OnInit {
       alert("You are logged in")
     } else {
       this.authService.userLogin(mail, password).subscribe((res: any) => {
-        console.log(res, "User başarıyla girdi.")
         localStorage.setItem("token", res)
         this.router.navigate(['user']);
       })
@@ -46,7 +45,6 @@ export class LoginComponent implements OnInit {
       alert("You are logged in")
     } else {
       this.authService.kurumLogin(mail, password).subscribe((res: any) => {
-        console.log(res, "Kurum başarıyla girdi.")
         localStorage.setItem("token", res)
         this.router.navigate(['kurum']);
       })

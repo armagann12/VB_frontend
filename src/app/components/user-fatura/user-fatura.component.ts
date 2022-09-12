@@ -11,13 +11,13 @@ export class UserFaturaComponent implements OnInit {
   initData: any;
   currentData:any;
   selected: any = 'all';
-  displayedColumns: string[] = ['name', 'price', 'status'];
+  displayedColumns: string[] = ['name', 'price', 'status', 'icon', 'pay'];
+  clickedRows = new Set<any>();
 
   constructor(private invoiceService: InvoiceService, private router: Router) { }
 
   ngOnInit(): void {
     this.invoiceService.getAllUsersInvoices().subscribe((res) =>{
-      console.log(res)
       this.initData = res
       this.currentData = this.initData
     })
@@ -31,12 +31,15 @@ export class UserFaturaComponent implements OnInit {
     const newData = this.initData.filter((data :any) => data.status === stat)
     this.currentData = newData
   }
-  
 
   logout() {
-    console.log("You are Logging Out")
     localStorage.removeItem("token")
     this.router.navigate(['login']);
   }
 
+  invoiceDetail(id: any){
+    this.invoiceService.getUserInvoice(id).subscribe((res) =>{
+      console.log(res)
+    })
+  }
 }
