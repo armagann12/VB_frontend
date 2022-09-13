@@ -35,8 +35,6 @@ export class KurumInfoComponent implements OnInit {
     const mail = this.mail
     const detail = this.detail
     this.kurumService.updateKurum(name, mail, detail).subscribe((res) => {
-      console.log(res)
-      console.log("Sucsess")
     })
   }
 

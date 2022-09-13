@@ -18,7 +18,6 @@ export class UserInfoComponent implements OnInit {
 
   ngOnInit(): void {
     this.userService.getUser().subscribe((res: any) => {
-      console.log(res, "user")
       this.data = res
       this.firstName = res.firstName
       this.lastName = res.lastName
@@ -37,8 +36,6 @@ export class UserInfoComponent implements OnInit {
     const mail = this.mail
     const tc = this.tc
     this.userService.updateUser(firstName, lastName, mail, tc).subscribe((res) => {
-      console.log(res)
-      console.log("Sucsess")
     })
     //ADD toastr
   }

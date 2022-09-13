@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { InvoiceService } from 'src/app/services/invoice.service';
 import { KurumService } from 'src/app/services/kurum.service';
+import { KurumFaturaDialogDeleteComponent } from '../kurum-fatura-dialog-delete/kurum-fatura-dialog-delete.component';
 import { KurumFaturaDialogComponent } from '../kurum-fatura-dialog/kurum-fatura-dialog.component';
 
 @Component({
@@ -11,7 +12,6 @@ import { KurumFaturaDialogComponent } from '../kurum-fatura-dialog/kurum-fatura-
   styleUrls: ['./kurum-fatura.component.css']
 })
 export class KurumFaturaComponent implements OnInit {
-
   initData: any;
   currentData: any;
   selected: any = 'all';
@@ -42,22 +42,26 @@ export class KurumFaturaComponent implements OnInit {
   }
 
   invoiceDetail(id: any) {
-    console.log(id)
     this.invoiceService.getKurumInvoice(id).subscribe((res: any) => {
-      console.log(res)
       this.kurumService.getUser(res.userModelId).subscribe((response: any) => {
         const dialogRef = this.dialog.open(KurumFaturaDialogComponent, {
           width: 'auto',
           data: { ...res, userTC: response.tc },
         });
         dialogRef.afterClosed().subscribe(result => {
-          console.log(result)
+          console.log("kapandı")
         });
       })
     })
   }
 
   deleteInvoice(id: any) {
-    console.log(id)
+    const dialogRef = this.dialog.open(KurumFaturaDialogDeleteComponent, {
+      width: 'auto',
+      data: { id: id },
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      this.currentData = this.currentData.filter((a: any) => a.id !== result)
+    });
   }
 }

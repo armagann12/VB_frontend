@@ -28,13 +28,11 @@ export class KurumUserComponent implements OnInit {
 
   userDetail(id: any) {
     this.kurumService.getUser(id).subscribe((res) =>{
-      console.log(res)
       const dialogRef = this.dialog.open(KurumUserDialogComponent, {
         width: 'auto',
         data: { ...res},
       });
       dialogRef.afterClosed().subscribe(result => {
-        console.log(result)
       });
     })
   }

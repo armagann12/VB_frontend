@@ -43,14 +43,12 @@ export class UserFaturaComponent implements OnInit {
 
   invoiceDetail(id: any) { 
     this.invoiceService.getUserInvoice(id).subscribe((res: any) => {
-      console.log(res);
       this.userService.getKurum(res.institutionModelId).subscribe((response: any) => {
         const dialogRef = this.dialog.open(UserFaturaDialogComponent, {
           width: 'auto',
           data: { ...res, kurumName: response.name },
         });
         dialogRef.afterClosed().subscribe(result => {
-          console.log(result)
         });
       })
     })
