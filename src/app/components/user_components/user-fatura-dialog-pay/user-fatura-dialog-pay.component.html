@@ -1,11 +1,10 @@
-<h1 mat-dialog-title>Are you sure you want <br> to pay this invoice</h1>
-<div class="flex">
+<h1 mat-dialog-title class="text-center">Bu faturayı ödemek <br> istediğine emin misin?</h1>
+<div class="flex justify-between">
     <div mat-dialog-actions>
-        <button class="" mat-button [mat-dialog-close]="" cdkFocusInitial>Cancel</button>
+        <button class="bg-slate-400" mat-button [mat-dialog-close]="" cdkFocusInitial>İptal</button>
     </div>
-
     <div mat-dialog-actions>
-        <button (click)="payInvoice(data.id)" class="bg-yellow-400 ml-8" mat-button [mat-dialog-close]="data.id"
-            cdkFocusInitial>Pay</button>
+        <button (click)="payInvoice(data.id)" class="bg-yellow-400" mat-button [mat-dialog-close]="data.id"
+            cdkFocusInitial>Öde</button>
     </div>
 </div>

@@ -16,7 +16,7 @@ export class UserComponent implements OnInit {
   constructor(private router: Router, private userService: UserService, private invoiceService: InvoiceService) { }
 
   ngOnInit(): void {
-  
+    this.router.navigate(['user/fatura'])
   }
 
   logout() {

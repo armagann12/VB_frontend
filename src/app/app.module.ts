@@ -34,6 +34,7 @@ import { KurumUserDialogComponent } from './components/kurum_components/kurum-us
 import { KurumFaturaDialogDeleteComponent } from './components/kurum_components/kurum-fatura-dialog-delete/kurum-fatura-dialog-delete.component';
 import { KurumUserDialogAddComponent } from './components/kurum_components/kurum-user-dialog-add/kurum-user-dialog-add.component';
 import { UserFaturaDialogPayComponent } from './components/user_components/user-fatura-dialog-pay/user-fatura-dialog-pay.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { ToastrModule } from 'ngx-toastr';
 
@@ -80,7 +81,8 @@ import { ToastrModule } from 'ngx-toastr';
     MatSelectModule,
     MatIconModule,
     MatDialogModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]

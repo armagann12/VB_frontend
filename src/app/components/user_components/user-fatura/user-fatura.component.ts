@@ -1,11 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSort, Sort } from '@angular/material/sort';
+import { MatPaginator } from '@angular/material/paginator';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { InvoiceService } from 'src/app/services/invoice.service';
 import { UserService } from 'src/app/services/user.service';
 import { UserFaturaDialogPayComponent } from '../user-fatura-dialog-pay/user-fatura-dialog-pay.component';
 import { UserFaturaDialogComponent } from '../user-fatura-dialog/user-fatura-dialog.component';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-user-fatura',
@@ -21,6 +24,7 @@ export class UserFaturaComponent implements OnInit {
 
   constructor(private invoiceService: InvoiceService, private router: Router,
     public dialog: MatDialog, private userService: UserService, private toastr: ToastrService) { }
+
 
   ngOnInit(): void {
     this.invoiceService.getAllUsersInvoices().subscribe((res) => {

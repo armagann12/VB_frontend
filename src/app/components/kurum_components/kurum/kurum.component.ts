@@ -17,7 +17,7 @@ export class KurumComponent implements OnInit {
   constructor(private router: Router, private kurumService: KurumService, private invoiceService: InvoiceService) { }
 
   ngOnInit(): void {
-    
+    this.router.navigate(['kurum/fatura'])
   }
   logout() {
     localStorage.removeItem("token")
