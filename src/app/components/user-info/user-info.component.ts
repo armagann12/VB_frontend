@@ -36,7 +36,6 @@ export class UserInfoComponent implements OnInit {
     const lastName = this.lastName
     const mail = this.mail
     const tc = this.tc
-    console.log(mail, tc, firstName, lastName)
     this.userService.updateUser(firstName, lastName, mail, tc).subscribe((res) => {
       console.log(res)
       console.log("Sucsess")

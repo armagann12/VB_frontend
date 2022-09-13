@@ -13,34 +13,49 @@ export class KurumService {
   public getKurum() {
     const token = localStorage.getItem("token")
 
-    const headers: any ={
+    const headers: any = {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
     }
 
-    const req = this.httpClient.get(this.SERVER + 'institution/me', { headers: headers})
+    const req = this.httpClient.get(this.SERVER + 'institution/me', { headers: headers })
     return req
   }
 
   public getAllUsers() {
     const token = localStorage.getItem("token")
 
-    const headers: any ={
+    const headers: any = {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
     }
-    const req = this.httpClient.get(this.SERVER + 'user', { headers: headers})
+    const req = this.httpClient.get(this.SERVER + 'user', { headers: headers })
     return req
   }
 
-  public getUser(id: string) {  
+  public getUser(id: string) {
     const token = localStorage.getItem("token")
 
-    const headers: any ={
+    const headers: any = {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`
     }
-    const req = this.httpClient.get(this.SERVER + `user/${id}`, { headers: headers})
+    const req = this.httpClient.get(this.SERVER + `user/${id}`, { headers: headers })
+    return req
+  }
+
+  public updateKurum(name: any, mail: any, detail: any) {
+    const token = localStorage.getItem("token")
+    const body = {
+      name,
+      mail,
+      detail
+    }
+    const headers: any = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    }
+    const req = this.httpClient.put(this.SERVER + `institution/me`, body, { headers: headers })
     return req
   }
 }

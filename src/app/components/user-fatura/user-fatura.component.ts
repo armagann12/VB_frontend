@@ -41,7 +41,7 @@ export class UserFaturaComponent implements OnInit {
     this.router.navigate(['login']);
   }
 
-  invoiceDetail(id: any) {
+  invoiceDetail(id: any) { 
     this.invoiceService.getUserInvoice(id).subscribe((res: any) => {
       console.log(res);
       this.userService.getKurum(res.institutionModelId).subscribe((response: any) => {

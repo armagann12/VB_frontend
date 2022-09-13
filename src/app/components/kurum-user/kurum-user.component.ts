@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { KurumService } from 'src/app/services/kurum.service';
+import { KurumUserDialogComponent } from '../kurum-user-dialog/kurum-user-dialog.component';
 
 @Component({
   selector: 'app-kurum-user',
@@ -9,9 +11,9 @@ import { KurumService } from 'src/app/services/kurum.service';
 })
 export class KurumUserComponent implements OnInit {
   data: any;
-  displayedColumns: string[] = ['name', 'mail'];
+  displayedColumns: string[] = ['name', 'mail', 'icon'];
 
-  constructor(private kurumService: KurumService, private router: Router) { }
+  constructor(private kurumService: KurumService, private router: Router, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.kurumService.getAllUsers().subscribe((res) => {
@@ -22,5 +24,18 @@ export class KurumUserComponent implements OnInit {
   logout() {
     localStorage.removeItem("token")
     this.router.navigate(['login']);
+  }
+
+  userDetail(id: any) {
+    this.kurumService.getUser(id).subscribe((res) =>{
+      console.log(res)
+      const dialogRef = this.dialog.open(KurumUserDialogComponent, {
+        width: 'auto',
+        data: { ...res},
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        console.log(result)
+      });
+    })
   }
 }

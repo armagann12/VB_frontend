@@ -29,6 +29,8 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatDialogModule} from '@angular/material/dialog';
 import { UserFaturaDialogComponent } from './components/user-fatura-dialog/user-fatura-dialog.component';
 import { UserKurumDialogComponent } from './components/user-kurum-dialog/user-kurum-dialog.component';
+import { KurumFaturaDialogComponent } from './components/kurum-fatura-dialog/kurum-fatura-dialog.component';
+import { KurumUserDialogComponent } from './components/kurum-user-dialog/kurum-user-dialog.component';
 
 
 
@@ -47,6 +49,8 @@ import { UserKurumDialogComponent } from './components/user-kurum-dialog/user-ku
     KurumUserComponent,
     UserFaturaDialogComponent,
     UserKurumDialogComponent,
+    KurumFaturaDialogComponent,
+    KurumUserDialogComponent,
     
   ],
   imports: [

@@ -8,12 +8,20 @@ import { KurumService } from 'src/app/services/kurum.service';
   styleUrls: ['./kurum-info.component.css']
 })
 export class KurumInfoComponent implements OnInit {
+  name: any;
+  mail: any;
+  detail: any;
   data: any;
+
+
   constructor(private kurumService: KurumService, private router: Router) { }
 
   ngOnInit(): void {
-    this.kurumService.getKurum().subscribe((res) => {
+    this.kurumService.getKurum().subscribe((res: any) => {
       this.data = res
+      this.name = res.name
+      this.mail = res.mail
+      this.detail = res.detail
     })
   }
 
@@ -21,4 +29,15 @@ export class KurumInfoComponent implements OnInit {
     localStorage.removeItem("token")
     this.router.navigate(['login']);
   }
+
+  onInfoChange() {
+    const name = this.name
+    const mail = this.mail
+    const detail = this.detail
+    this.kurumService.updateKurum(name, mail, detail).subscribe((res) => {
+      console.log(res)
+      console.log("Sucsess")
+    })
+  }
+
 }
