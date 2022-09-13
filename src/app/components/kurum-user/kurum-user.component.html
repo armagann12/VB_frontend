@@ -26,6 +26,14 @@
             </td>
         </ng-container>
 
+        <ng-container matColumnDef="add">
+            <th mat-header-cell *matHeaderCellDef> Fatura Ekle </th>
+            <td mat-cell *matCellDef="let element">
+                <mat-icon (click)="addInvoice(element.id)" class="cursor-pointer ml-4" aria-hidden="false"
+                    aria-label="Example info icon" fontIcon="add_circle"></mat-icon>
+            </td>
+        </ng-container>
+
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>

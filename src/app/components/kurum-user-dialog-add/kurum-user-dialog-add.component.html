@@ -1,0 +1,42 @@
+<h1 mat-dialog-title>Fatura Ekle</h1>
+<div mat-dialog-content>
+    <div>
+        <form (submit)="addInvoice()">
+            <h1 class="text-xl">Fatura Adı:</h1>
+            <mat-form-field class="w-auto" appearance="fill">
+                <mat-label>Ad</mat-label>
+                <input [(ngModel)]="data.name" name="name" matInput>
+            </mat-form-field>
+            <h1 class="text-xl">Fatura Detayı:</h1>
+            <mat-form-field class="w-auto" appearance="fill">
+                <mat-label>Detay</mat-label>
+                <input [(ngModel)]="data.detail" name="lastName" matInput>
+            </mat-form-field>
+            <h1 class="text-xl">Ücret:</h1>
+            <mat-form-field class="w-auto" appearance="fill">
+                <mat-label>Ücret</mat-label>
+                <input [(ngModel)]="data.price" name="price" matInput>
+            </mat-form-field>
+            <div class="flex">
+                <!-- <button mat-button class="bg-lime-500" type="submit">Change</button> -->
+                <div mat-dialog-actions>
+                    <button class="" mat-button [mat-dialog-close]="" cdkFocusInitial>Cancel</button>
+                </div>
+                <div mat-dialog-actions>
+                    <button type="submit" class="bg-blue-600 ml-8" mat-button [mat-dialog-close]="data"
+                        cdkFocusInitial>Add</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+<!-- <div class="flex">
+    <div mat-dialog-actions>
+        <button class="" mat-button [mat-dialog-close]="" cdkFocusInitial>Ok</button>
+    </div>
+    <div mat-dialog-actions>
+        <button (click)="addInvoice(data)" class="bg-blue-600 ml-8" mat-button [mat-dialog-close]="data"
+            cdkFocusInitial>Add</button>
+    </div>
+</div> -->

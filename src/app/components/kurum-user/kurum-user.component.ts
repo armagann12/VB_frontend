@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { KurumService } from 'src/app/services/kurum.service';
+import { KurumUserDialogAddComponent } from '../kurum-user-dialog-add/kurum-user-dialog-add.component';
 import { KurumUserDialogComponent } from '../kurum-user-dialog/kurum-user-dialog.component';
 
 @Component({
@@ -11,7 +12,10 @@ import { KurumUserDialogComponent } from '../kurum-user-dialog/kurum-user-dialog
 })
 export class KurumUserComponent implements OnInit {
   data: any;
-  displayedColumns: string[] = ['name', 'mail', 'icon'];
+  name: any;
+  detail: any;
+  price: any;
+  displayedColumns: string[] = ['name', 'mail', 'icon', 'add'];
 
   constructor(private kurumService: KurumService, private router: Router, public dialog: MatDialog) { }
 
@@ -27,13 +31,23 @@ export class KurumUserComponent implements OnInit {
   }
 
   userDetail(id: any) {
-    this.kurumService.getUser(id).subscribe((res) =>{
+    this.kurumService.getUser(id).subscribe((res) => {
       const dialogRef = this.dialog.open(KurumUserDialogComponent, {
         width: 'auto',
-        data: { ...res},
+        data: { ...res },
       });
       dialogRef.afterClosed().subscribe(result => {
       });
     })
+  }
+
+  addInvoice(id: any) {
+    const dialogRef = this.dialog.open(KurumUserDialogAddComponent, {
+      width: 'auto',
+      data: { name: this.name, price: this.price, detail: this.detail, userModelId: id },
+    });
+    dialogRef.afterClosed().subscribe(result => {
+
+    });
   }
 }
