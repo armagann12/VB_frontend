@@ -4,10 +4,30 @@
         <mat-icon aria-hidden="false" aria-label="Example logout icon" fontIcon="logout" class=""></mat-icon>
     </button>
 </mat-toolbar>
-
-<div *ngIf="data">
-    <h2>Firstname: {{data.firstName}}</h2>
-    <h2>Lastname: {{data.lastName}}</h2>
-    <h2>Mail: {{data.mail}}</h2>
-    <h2>Tc kimlik Numarası: {{data.tc}}</h2>
+<div *ngIf="data" class="mt-8 ml-8">
+    <form (submit)="onInfoChange()" class="max-w-2xl min-w-full w-1/2">
+        <h1 class="text-2xl">Ad</h1>
+        <mat-form-field class="w-1/2" appearance="fill">
+            <mat-label>Ad</mat-label>
+            <input [(ngModel)]="firstName" name="firstName" matInput placeholder="Ex. Pizza" value="{{data.firstName}}">
+        </mat-form-field>
+        <h1 class="text-2xl">Soyad</h1>
+        <mat-form-field class="w-1/2" appearance="fill">
+            <mat-label>Soyad</mat-label>
+            <input [(ngModel)]="lastName" name="lastName" matInput placeholder="Ex. Pizza" [value]="data.lastName">
+        </mat-form-field>
+        <h1 class="text-2xl">Mail</h1>
+        <mat-form-field class="w-1/2" appearance="fill">
+            <mat-label>Mail</mat-label>
+            <input [(ngModel)]="mail" name="mail" matInput placeholder="Ex. Pizza" value="{{data.mail}}">
+        </mat-form-field>
+        <h1 class="text-2xl">TC Kimlik Numarası:</h1>
+        <mat-form-field class="w-1/2" appearance="fill">
+            <mat-label>TC</mat-label>
+            <input [(ngModel)]="tc" name="tc" matInput placeholder="Ex. Pizza" value="{{data.tc}}">
+        </mat-form-field>
+        <div class="flex"> 
+            <button mat-button class="bg-lime-500" type="submit">Change</button>
+        </div>
+    </form>
 </div>

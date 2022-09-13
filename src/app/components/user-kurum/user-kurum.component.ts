@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
+import { UserKurumDialogComponent } from '../user-kurum-dialog/user-kurum-dialog.component';
 
 @Component({
   selector: 'app-user-kurum',
@@ -12,7 +14,7 @@ export class UserKurumComponent implements OnInit {
   displayedColumns: string[] = ['name', 'mail', 'icon'];
 
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.userService.getAllKurum().subscribe((res) =>{
@@ -23,9 +25,16 @@ export class UserKurumComponent implements OnInit {
     localStorage.removeItem("token")
     this.router.navigate(['login']);
   }
-  invoiceDetail(id: any){
+  kurumDetail(id: any){
     this.userService.getKurum(id).subscribe((res) =>{
       console.log(res)
+      const dialogRef = this.dialog.open(UserKurumDialogComponent, {
+        width: 'auto',
+        data: { ...res},
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        console.log(result)
+      });
     })
   }
 

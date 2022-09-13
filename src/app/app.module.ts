@@ -26,6 +26,9 @@ import {MatTableModule} from '@angular/material/table';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatSelectModule} from '@angular/material/select';
 import {MatIconModule} from '@angular/material/icon';
+import {MatDialogModule} from '@angular/material/dialog';
+import { UserFaturaDialogComponent } from './components/user-fatura-dialog/user-fatura-dialog.component';
+import { UserKurumDialogComponent } from './components/user-kurum-dialog/user-kurum-dialog.component';
 
 
 
@@ -42,6 +45,8 @@ import {MatIconModule} from '@angular/material/icon';
     UserKurumComponent,
     KurumFaturaComponent,
     KurumUserComponent,
+    UserFaturaDialogComponent,
+    UserKurumDialogComponent,
     
   ],
   imports: [
@@ -60,7 +65,8 @@ import {MatIconModule} from '@angular/material/icon';
     MatTableModule,
     MatButtonToggleModule,
     MatSelectModule,
-    MatIconModule 
+    MatIconModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
