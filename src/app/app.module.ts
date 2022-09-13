@@ -33,6 +33,7 @@ import { KurumFaturaDialogComponent } from './components/kurum-fatura-dialog/kur
 import { KurumUserDialogComponent } from './components/kurum-user-dialog/kurum-user-dialog.component';
 import { KurumFaturaDialogDeleteComponent } from './components/kurum-fatura-dialog-delete/kurum-fatura-dialog-delete.component';
 import { KurumUserDialogAddComponent } from './components/kurum-user-dialog-add/kurum-user-dialog-add.component';
+import { UserFaturaDialogPayComponent } from './components/user-fatura-dialog-pay/user-fatura-dialog-pay.component';
 
 
 
@@ -55,6 +56,7 @@ import { KurumUserDialogAddComponent } from './components/kurum-user-dialog-add/
     KurumUserDialogComponent,
     KurumFaturaDialogDeleteComponent,
     KurumUserDialogAddComponent,
+    UserFaturaDialogPayComponent,
     
   ],
   imports: [

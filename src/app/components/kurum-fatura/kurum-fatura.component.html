@@ -44,7 +44,7 @@
         <ng-container matColumnDef="delete">
             <th mat-header-cell *matHeaderCellDef> Sil </th>
             <td mat-cell *matCellDef="let element">
-                <mat-icon (click)="deleteInvoice(element.id)" class="cursor-pointer"
+                <mat-icon (click)="deleteInvoice(element.id)" class="cursor-pointer" *ngIf="element.status === false"
                     aria-hidden="false" aria-label="Example delete icon" fontIcon="delete"></mat-icon>
             </td>
         </ng-container>

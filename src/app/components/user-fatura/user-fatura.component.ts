@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { InvoiceService } from 'src/app/services/invoice.service';
 import { UserService } from 'src/app/services/user.service';
+import { UserFaturaDialogPayComponent } from '../user-fatura-dialog-pay/user-fatura-dialog-pay.component';
 import { UserFaturaDialogComponent } from '../user-fatura-dialog/user-fatura-dialog.component';
 
 @Component({
@@ -24,6 +25,7 @@ export class UserFaturaComponent implements OnInit {
     this.invoiceService.getAllUsersInvoices().subscribe((res) => {
       this.initData = res
       this.currentData = this.initData
+      console.log(this.currentData)
     })
   }
 
@@ -41,7 +43,7 @@ export class UserFaturaComponent implements OnInit {
     this.router.navigate(['login']);
   }
 
-  invoiceDetail(id: any) { 
+  invoiceDetail(id: any) {
     this.invoiceService.getUserInvoice(id).subscribe((res: any) => {
       this.userService.getKurum(res.institutionModelId).subscribe((response: any) => {
         const dialogRef = this.dialog.open(UserFaturaDialogComponent, {
@@ -54,11 +56,21 @@ export class UserFaturaComponent implements OnInit {
     })
   }
 
-  payInvoice(id: any){
-
-    //yeni dalog pay yaptıktan sonra mapla status trueya dönmeli aynı zmaanda!!
-    // this.invoiceService.payInvoice(id).subscribe((res) => console.log(res))
-    console.log(id)
+  payInvoice(id: any) {
+    const dialogRef = this.dialog.open(UserFaturaDialogPayComponent, {
+      width: 'auto',
+      data: { id: id },
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if(result !== undefined){
+        this.currentData.map((i: any) => {
+          if(i.id === result){
+            i.status = true
+          }
+        })
+      }
+    });
+    
   }
 
 }

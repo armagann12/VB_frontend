@@ -61,7 +61,9 @@ export class KurumFaturaComponent implements OnInit {
       data: { id: id },
     });
     dialogRef.afterClosed().subscribe(result => {
-      this.currentData = this.currentData.filter((a: any) => a.id !== result)
+      if(result !== undefined){
+        this.currentData = this.currentData.filter((a: any) => a.id !== result)
+      }
     });
   }
 }
