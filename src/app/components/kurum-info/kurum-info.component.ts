@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { KurumService } from 'src/app/services/kurum.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class KurumInfoComponent implements OnInit {
   data: any;
 
 
-  constructor(private kurumService: KurumService, private router: Router) { }
+  constructor(private kurumService: KurumService, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.kurumService.getKurum().subscribe((res: any) => {
@@ -35,6 +36,7 @@ export class KurumInfoComponent implements OnInit {
     const mail = this.mail
     const detail = this.detail
     this.kurumService.updateKurum(name, mail, detail).subscribe((res) => {
+      this.toastr.success("Bilgiler Güncellendi","", {timeOut: 2000})
     })
   }
 

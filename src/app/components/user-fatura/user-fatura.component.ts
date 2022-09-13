@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { InvoiceService } from 'src/app/services/invoice.service';
 import { UserService } from 'src/app/services/user.service';
 import { UserFaturaDialogPayComponent } from '../user-fatura-dialog-pay/user-fatura-dialog-pay.component';
@@ -19,7 +20,7 @@ export class UserFaturaComponent implements OnInit {
   clickedRows = new Set<any>();
 
   constructor(private invoiceService: InvoiceService, private router: Router,
-    public dialog: MatDialog, private userService: UserService) { }
+    public dialog: MatDialog, private userService: UserService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.invoiceService.getAllUsersInvoices().subscribe((res) => {
@@ -62,15 +63,16 @@ export class UserFaturaComponent implements OnInit {
       data: { id: id },
     });
     dialogRef.afterClosed().subscribe(result => {
-      if(result !== undefined){
+      if (result !== undefined) {
         this.currentData.map((i: any) => {
-          if(i.id === result){
+          if (i.id === result) {
             i.status = true
           }
         })
+        this.toastr.success("Fatura Ödendi", "", { timeOut: 3000 })
       }
     });
-    
+
   }
 
 }

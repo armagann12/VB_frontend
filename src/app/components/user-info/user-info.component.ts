@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class UserInfoComponent implements OnInit {
   mail: any;
   tc: any;
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private router: Router, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.userService.getUser().subscribe((res: any) => {
@@ -36,8 +37,8 @@ export class UserInfoComponent implements OnInit {
     const mail = this.mail
     const tc = this.tc
     this.userService.updateUser(firstName, lastName, mail, tc).subscribe((res) => {
+      this.toastr.success("Bilgiler Güncellendi","", {timeOut: 2000})
     })
-    //ADD toastr
   }
 
 }

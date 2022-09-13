@@ -5,7 +5,8 @@ import { InvoiceService } from 'src/app/services/invoice.service';
 import { KurumService } from 'src/app/services/kurum.service';
 import { KurumFaturaDialogDeleteComponent } from '../kurum-fatura-dialog-delete/kurum-fatura-dialog-delete.component';
 import { KurumFaturaDialogComponent } from '../kurum-fatura-dialog/kurum-fatura-dialog.component';
-
+import { ToastrService } from 'ngx-toastr';
+import { timeout } from 'rxjs';
 @Component({
   selector: 'app-kurum-fatura',
   templateUrl: './kurum-fatura.component.html',
@@ -18,7 +19,7 @@ export class KurumFaturaComponent implements OnInit {
   displayedColumns: string[] = ['name', 'price', 'status', 'icon', 'delete'];
 
   constructor(private invoiceService: InvoiceService, private router: Router,
-    private kurumService: KurumService, public dialog: MatDialog) { }
+    private kurumService: KurumService, public dialog: MatDialog, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.invoiceService.getAllKurumInvoices().subscribe((res) => {
@@ -49,7 +50,6 @@ export class KurumFaturaComponent implements OnInit {
           data: { ...res, userTC: response.tc },
         });
         dialogRef.afterClosed().subscribe(result => {
-          console.log("kapandı")
         });
       })
     })
@@ -63,6 +63,7 @@ export class KurumFaturaComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if(result !== undefined){
         this.currentData = this.currentData.filter((a: any) => a.id !== result)
+        this.toastr.success("Fatura Silindi","", {timeOut: 3000})
       }
     });
   }

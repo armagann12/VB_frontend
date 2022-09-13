@@ -35,6 +35,8 @@ import { KurumFaturaDialogDeleteComponent } from './components/kurum-fatura-dial
 import { KurumUserDialogAddComponent } from './components/kurum-user-dialog-add/kurum-user-dialog-add.component';
 import { UserFaturaDialogPayComponent } from './components/user-fatura-dialog-pay/user-fatura-dialog-pay.component';
 
+import { ToastrModule } from 'ngx-toastr';
+
 
 
 @NgModule({
@@ -58,6 +60,7 @@ import { UserFaturaDialogPayComponent } from './components/user-fatura-dialog-pa
     KurumUserDialogAddComponent,
     UserFaturaDialogPayComponent,
     
+    
   ],
   imports: [
     BrowserModule,
@@ -76,7 +79,8 @@ import { UserFaturaDialogPayComponent } from './components/user-fatura-dialog-pa
     MatButtonToggleModule,
     MatSelectModule,
     MatIconModule,
-    MatDialogModule
+    MatDialogModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
