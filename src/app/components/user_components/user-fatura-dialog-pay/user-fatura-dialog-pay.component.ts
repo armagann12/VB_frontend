@@ -17,7 +17,6 @@ export class UserFaturaDialogPayComponent implements OnInit {
   
   payInvoice(id: any){
     this.invoiceService.payInvoice(id).subscribe((res) =>{
-      console.log(res)
     })
   }
 

@@ -31,7 +31,7 @@ export class UserKurumComponent implements OnInit {
         width: 'auto',
         data: { ...res},
       });
-      dialogRef.afterClosed().subscribe(result => {
+      dialogRef.afterClosed().subscribe(s => {
       });
     })
   }

@@ -26,7 +26,6 @@ export class UserFaturaComponent implements OnInit {
     this.invoiceService.getAllUsersInvoices().subscribe((res) => {
       this.initData = res
       this.currentData = this.initData
-      console.log(this.currentData)
     })
   }
 

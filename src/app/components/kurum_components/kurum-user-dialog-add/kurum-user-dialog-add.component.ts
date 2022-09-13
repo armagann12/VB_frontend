@@ -7,17 +7,14 @@ import { InvoiceService } from 'src/app/services/invoice.service';
   templateUrl: './kurum-user-dialog-add.component.html',
   styleUrls: ['./kurum-user-dialog-add.component.css']
 })
-export class KurumUserDialogAddComponent implements OnInit {  
+export class KurumUserDialogAddComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<KurumUserDialogAddComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any, private invoiceService: InvoiceService) { }
 
   ngOnInit(): void {
   }
   addInvoice() {
-    console.log(this.data)
     this.invoiceService.postInvoice(this.data.name, this.data.price, this.data.detail, this.data.userModelId).subscribe((res) => {
-      console.log(res)
-      console.log("sucesses")
     })
   }
 }
