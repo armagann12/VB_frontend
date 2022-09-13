@@ -51,7 +51,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['user']);
       }, (error) => {
         console.log(error)
-        this.toastr.error("Error", "", { timeOut: 3000 })
+        this.toastr.error("Hata", "", { timeOut: 3000 })
       }
       )
     }
@@ -81,7 +81,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['kurum']);
       }, (error) => {
         console.log(error)
-        this.toastr.error("Error", "", { timeOut: 3000 })
+        this.toastr.error("Hata", "", { timeOut: 3000 })
       })
     }
 

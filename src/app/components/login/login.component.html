@@ -1,29 +1,30 @@
 <div [ngStyle]="{'background-image': getUrl()}" class="h-full w-full">
-    <div class="flex space-x-2">
-        <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
-            <mat-button-toggle (click)="isUserFunc()" value="userL">User Login</mat-button-toggle>
-            <mat-button-toggle (click)="isKurumFunc()" value="kurumL">Kurum Login</mat-button-toggle>
-        </mat-button-toggle-group>
-    </div>
+    
     <div *ngIf="isUser" class="flex justify-center relative">
         <mat-card class="max-w-xs absolute translate-x-0 translate-y-1/3">
             <form (submit)="onUserLoginSubmit()" class="text-center">
-                <mat-card-title>User Login</mat-card-title>
+                <div class="flex space-x-2 justify-center mb-6">
+                    <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+                        <mat-button-toggle (click)="isUserFunc()" value="userL">Müşteri</mat-button-toggle>
+                        <mat-button-toggle (click)="isKurumFunc()" value="kurumL">Kurum</mat-button-toggle>
+                    </mat-button-toggle-group>
+                </div>
+                <mat-card-title>Müşteri Girişi</mat-card-title>
                 <mat-card-content>
                     <mat-form-field>
                         <mat-label>Mail </mat-label>
-                        <input matInput type="email" name="mail" id="userLMail" placeholder="Add mail"
+                        <input matInput type="email" name="mail" id="userLMail" placeholder="example@gmail.com"
                             [(ngModel)]="userLoginMail">
                     </mat-form-field>
                     <mat-form-field>
-                        <mat-label>Password</mat-label>
-                        <input matInput type="password" name="password" id="userLpassword" placeholder="Add password"
+                        <mat-label>Şifre</mat-label>
+                        <input matInput type="password" name="password" id="userLpassword" placeholder=""
                             [(ngModel)]="userLoginPassword">
                     </mat-form-field>
                 </mat-card-content>
                 <div>
-                    <a (click)="registerNav()" class=" underline cursor-pointer text-blue-600 mr-12">Register</a>
-                    <button type="submit" mat-button class="bg-blue-500">Login</button>
+                    <a (click)="registerNav()" class=" underline cursor-pointer text-red-400 mr-8">Kayıt Ol</a>
+                    <button type="submit" mat-button class="bg-blue-500">Giriş Yap</button>
                 </div>
             </form>
         </mat-card>
@@ -31,22 +32,28 @@
     <div *ngIf="!isUser" class="flex justify-center relative">
         <mat-card class="max-w-xs absolute translate-x-0 translate-y-1/3">
             <form (submit)="onKurumLoginSubmit()" class="text-center">
-                <mat-card-title>Kurum Login</mat-card-title>
+                <div class="flex space-x-2 justify-center mb-6">
+                    <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+                        <mat-button-toggle (click)="isUserFunc()" value="userL">Müşteri</mat-button-toggle>
+                        <mat-button-toggle (click)="isKurumFunc()" value="kurumL">Kurum</mat-button-toggle>
+                    </mat-button-toggle-group>
+                </div>
+                <mat-card-title>Kurum Girişi</mat-card-title>
                 <mat-card-content>
                     <mat-form-field>
                         <mat-label>Mail </mat-label>
-                        <input matInput type="email" name="mail" id="kurumLmail" placeholder="Add mail"
+                        <input matInput type="email" name="mail" id="kurumLmail" placeholder="example@gmail.com"
                             [(ngModel)]="kurumLoginMail">
                     </mat-form-field>
                     <mat-form-field>
-                        <mat-label>Password </mat-label>
-                        <input matInput type="password" name="password" id="kurumLpassword" placeholder="Add password"
+                        <mat-label>Şifre </mat-label>
+                        <input matInput type="password" name="password" id="kurumLpassword" placeholder=""
                             [(ngModel)]="kurumLoginPassword">
                     </mat-form-field>
                 </mat-card-content>
                 <div>
-                    <a (click)="registerNav()" class="underline cursor-pointer text-blue-600 mr-12">Register</a>
-                    <button type="submit" mat-button class="bg-blue-500">Login</button>
+                    <a (click)="registerNav()" class="underline cursor-pointer text-red-400 mr-8">Kayıt Ol</a>
+                    <button type="submit" mat-button class="bg-blue-500">Giriş Yap</button>
                 </div>
             </form>
         </mat-card>
