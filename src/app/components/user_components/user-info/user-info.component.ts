@@ -37,8 +37,12 @@ export class UserInfoComponent implements OnInit {
     const mail = this.mail
     const tc = this.tc
     this.userService.updateUser(firstName, lastName, mail, tc).subscribe((res) => {
-      this.toastr.success("Bilgiler Güncellendi","", {timeOut: 2000})
-    })
+      this.toastr.success("Bilgiler Güncellendi", "", { timeOut: 2000 })
+    }, ((err) => {
+      console.log(err)
+      this.toastr.error("Hata", "", { timeOut: 2000 })
+
+    }))
   }
 
 }

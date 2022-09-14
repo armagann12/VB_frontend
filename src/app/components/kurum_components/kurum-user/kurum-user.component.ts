@@ -51,6 +51,9 @@ export class KurumUserComponent implements OnInit {
       if (result !== undefined) {
         this.toastr.success("Fatura Eklendi", "", { timeOut: 3000 })
       }
-    });
+    }, ((err) => {
+      console.log(err)
+      this.toastr.error("Hata", "", { timeOut: 3000 })
+    }));
   }
 }

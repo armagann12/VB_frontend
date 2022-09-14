@@ -24,7 +24,7 @@ export class KurumFaturaComponent implements OnInit {
   ngOnInit(): void {
     this.invoiceService.getAllKurumInvoices().subscribe((res) => {
       this.initData = res
-      this.currentData = this.initData
+      this.currentData = this.initData.reverse()
     })
   }
 
@@ -65,6 +65,9 @@ export class KurumFaturaComponent implements OnInit {
         this.currentData = this.currentData.filter((a: any) => a.id !== result)
         this.toastr.success("Fatura Silindi","", {timeOut: 3000})
       }
-    });
+    }, ((err) => {
+      this.toastr.error("Hata","", {timeOut: 3000})
+      console.log(err)
+    }));
   }
 }

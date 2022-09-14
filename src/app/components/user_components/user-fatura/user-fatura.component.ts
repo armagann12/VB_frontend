@@ -29,7 +29,7 @@ export class UserFaturaComponent implements OnInit {
   ngOnInit(): void {
     this.invoiceService.getAllUsersInvoices().subscribe((res) => {
       this.initData = res
-      this.currentData = this.initData
+      this.currentData = this.initData.reverse()
     })
   }
 
@@ -49,6 +49,7 @@ export class UserFaturaComponent implements OnInit {
 
   invoiceDetail(id: any) {
     this.invoiceService.getUserInvoice(id).subscribe((res: any) => {
+      console.log(res)
       this.userService.getKurum(res.institutionModelId).subscribe((response: any) => {
         const dialogRef = this.dialog.open(UserFaturaDialogComponent, {
           width: 'auto',
@@ -74,7 +75,10 @@ export class UserFaturaComponent implements OnInit {
         })
         this.toastr.success("Fatura Ödendi", "", { timeOut: 3000 })
       }
-    });
+    }, ((err) => {
+      console.log(err)
+      this.toastr.success("Hata", "", { timeOut: 3000 })
+    }));
 
   }
 
