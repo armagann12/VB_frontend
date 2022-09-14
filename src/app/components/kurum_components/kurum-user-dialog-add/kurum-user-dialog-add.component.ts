@@ -14,7 +14,9 @@ export class KurumUserDialogAddComponent implements OnInit {
   ngOnInit(): void {
   }
   addInvoice() {
-    this.invoiceService.postInvoice(this.data.name, this.data.price, this.data.detail, this.data.userModelId).subscribe((res) => {
-    })
+    if (this.data.name !== undefined && this.data.detail !== undefined && this.data.price !== undefined) {
+      this.invoiceService.postInvoice(this.data.name, this.data.price, this.data.detail, this.data.userModelId).subscribe((res) => {
+      })
+    }
+    }
   }
-}

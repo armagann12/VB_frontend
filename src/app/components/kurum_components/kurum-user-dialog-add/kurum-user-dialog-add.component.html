@@ -5,17 +5,17 @@
             <h1 class="text-l mt-3">Fatura Adı:</h1>
             <mat-form-field class="w-auto" appearance="fill">
                 <mat-label>Ad</mat-label>
-                <input [(ngModel)]="data.name" minlength="5" maxlength="20" name="name" matInput>
+                <input [(ngModel)]="data.name" required minlength="5" maxlength="20" name="name" matInput>
             </mat-form-field>
             <h1 class="text-l">Fatura Detayı:</h1>
             <mat-form-field class="w-auto" appearance="fill" ü>
                 <mat-label>Detay</mat-label>
-                <input [(ngModel)]="data.detail" minlength="5" maxlength="50" name="lastName" matInput>
+                <input [(ngModel)]="data.detail" required minlength="5" maxlength="50" name="lastName" matInput>
             </mat-form-field>
             <h1 class="text-l">Ücret:</h1>
             <mat-form-field class="w-auto" appearance="fill">
                 <mat-label>Ücret</mat-label>
-                <input [(ngModel)]="data.price" type="number" min="1" max="999" name="price" matInput>
+                <input [(ngModel)]="data.price" required type="number" min="1" max="999" name="price" matInput>
             </mat-form-field>
             <div class="flex justify-between">
                 <div mat-dialog-actions>

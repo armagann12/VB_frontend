@@ -49,11 +49,12 @@ export class KurumUserComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result !== undefined) {
-        this.toastr.success("Fatura Eklendi", "", { timeOut: 3000 })
+        if (result.name !== undefined && result.detail !== undefined && result.price !== undefined) {
+          this.toastr.success("Fatura Eklendi", "", { timeOut: 3000 })
+        } else {
+          this.toastr.error("Hata", "", { timeOut: 3000 })
+        }
       }
-    }, ((err) => {
-      console.log(err)
-      this.toastr.error("Hata", "", { timeOut: 3000 })
-    }));
+    });
   }
 }
