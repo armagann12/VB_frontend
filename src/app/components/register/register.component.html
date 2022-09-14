@@ -28,20 +28,20 @@
                         <mat-label>
                             TC Kimlik Numarası
                         </mat-label>
-                        <input matInput required type="number" name="tc" id="tc" placeholder="" [(ngModel)]="tc">
+                        <input matInput required type="number" min="10000000000" max="99999999999" name="tc" id="tc" placeholder="" [(ngModel)]="tc">
                     </mat-form-field>
                     <mat-form-field>
                         <mat-label>
                             Mail
                         </mat-label>
-                        <input matInput required type="email" name="mail" id="userMail" placeholder="example@gmail.com"
+                        <input matInput required type="email" minlength="10" maxlength="25" name="mail" id="userMail" placeholder="example@gmail.com"
                             [(ngModel)]="userRegisterMail">
                     </mat-form-field>
                     <mat-form-field>
                         <mat-label>
                             Şifre
                         </mat-label>
-                        <input matInput required type="password" name="password" id="userPassword" placeholder=""
+                        <input matInput required type="password" minlength="3" maxlength="15" name="password" id="userPassword" placeholder=""
                             [(ngModel)]="userRegisterPassword">
                     </mat-form-field>
                 </mat-card-content>
@@ -68,25 +68,25 @@
                         <mat-label>
                             Kurum Adı
                         </mat-label>
-                        <input matInput required type="text" name="name" id="name" placeholder="Vakıfbank T.A.O." [(ngModel)]="name">
+                        <input matInput required type="text" minlength="3" maxlength="15" name="name" id="name" placeholder="Vakıfbank T.A.O." [(ngModel)]="name">
                     </mat-form-field>
                     <mat-form-field>
                         <mat-label>
                             Kurum Detayı
                         </mat-label>
-                        <input matInput required type="text" name="detail" id="detail" placeholder="Bankacılık" [(ngModel)]="detail">
+                        <input matInput required type="text" minlength="3" maxlength="15" name="detail" id="detail" placeholder="Bankacılık" [(ngModel)]="detail">
                     </mat-form-field>
                     <mat-form-field>
                         <mat-label>
                             Mail
                         </mat-label>
-                        <input matInput required type="email" name="mail" id="kurumMail" placeholder="example@gmail.com" [(ngModel)]="kurumRegisterMail">
+                        <input matInput required type="email" minlength="10" maxlength="25" name="mail" id="kurumMail" placeholder="example@gmail.com" [(ngModel)]="kurumRegisterMail">
                     </mat-form-field>
                     <mat-form-field>
                         <mat-label>
                             Şifre
                         </mat-label>
-                        <input matInput required type="password" name="kurumPassword" id="password" placeholder=""
+                        <input matInput required type="password" minlength="3" maxlength="15" name="kurumPassword" id="password" placeholder=""
                             [(ngModel)]="kurumRegisterPassword">
                     </mat-form-field>
                 </mat-card-content>

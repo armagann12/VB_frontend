@@ -6,20 +6,20 @@
 </mat-toolbar>
 <div *ngIf="data" class="mt-8 ml-8"  >
     <form (submit)="onInfoChange()" class="max-w-2xl min-w-full w-1/2 text-sm">
-        <h1 class="text-xl">Kurum Adı:</h1>
+        <h1 class="text-xl">Ad:</h1>
         <mat-form-field class="w-1/2" appearance="fill">
             <mat-label>Ad</mat-label>
-            <input [(ngModel)]="name" name="firstName" matInput  value="{{data.name}}">
+            <input [(ngModel)]="name" name="firstName" minlength="3" maxlength="20" matInput  value="{{data.name}}">
         </mat-form-field>
-        <h1 class="text-xl">Kurum Detayı:</h1>
+        <h1 class="text-xl">Detay:</h1>
         <mat-form-field class="w-1/2" appearance="fill">
             <mat-label>Detay</mat-label>
-            <input [(ngModel)]="detail" name="lastName" matInput value="{{data.detail}}">
+            <input [(ngModel)]="detail" name="lastName" minlength="3" maxlength="50" matInput value="{{data.detail}}">
         </mat-form-field>
         <h1 class="text-xl">Mail:</h1>
         <mat-form-field class="w-1/2" appearance="fill">
             <mat-label>Mail</mat-label>
-            <input [(ngModel)]="mail" name="mail" matInput value="{{data.mail}}">
+            <input [(ngModel)]="mail" name="mail" type="mail" minlength="10" maxlength="30" matInput value="{{data.mail}}">
         </mat-form-field>
         <div class="flex"> 
             <button mat-button class="bg-lime-500" type="submit">Güncelle</button>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -22,15 +23,15 @@ export class RegisterComponent implements OnInit {
 
   isUser: boolean = true;
   rateControl: any
-  
-  
-  constructor(private router: Router, private authService: AuthService) { }
-  
-  
+
+
+  constructor(private router: Router, private authService: AuthService, private toastr: ToastrService) { }
+
+
   ngOnInit(): void {
   }
 
-  loginNav(){
+  loginNav() {
     this.router.navigate(['login']);
   }
 
@@ -42,8 +43,12 @@ export class RegisterComponent implements OnInit {
       this.lastName,
       this.tc
     ).subscribe((res) => {
+      this.toastr.success("Başarıyla Kaydınız Alınmıştır", "", { timeOut: 3000 }) 
       this.router.navigate(['login']);
-    })
+    }, ((err) => {
+      this.toastr.error("Hata", "", { timeOut: 3000 })
+      console.log(err)
+    }))
   }
 
   onKurumSubmit() {
@@ -52,17 +57,21 @@ export class RegisterComponent implements OnInit {
       this.name,
       this.detail
     ).subscribe((res) => {
+      this.toastr.success("Başarıyla Kaydınız Alınmıştır", "", { timeOut: 3000 })
       this.router.navigate(['login']);
-    })
+    }, ((err) => {
+      this.toastr.error("Hata", "", { timeOut: 3000 })
+      console.log(err)
+    }))
   }
 
-  isUserFunc(){
-    if(this.isUser === false){
+  isUserFunc() {
+    if (this.isUser === false) {
       this.isUser = true
     }
   }
-  isKurumFunc(){
-    if(this.isUser === true){
+  isKurumFunc() {
+    if (this.isUser === true) {
       this.isUser = false
     }
   }

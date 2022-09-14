@@ -13,12 +13,12 @@
                 <mat-card-content>
                     <mat-form-field>
                         <mat-label>Mail </mat-label>
-                        <input matInput type="email" name="mail" id="userLMail" placeholder="example@gmail.com"
+                        <input matInput type="email" minlength="10" maxlength="25" name="mail" id="userLMail" placeholder="example@gmail.com"
                             [(ngModel)]="userLoginMail">
                     </mat-form-field>
                     <mat-form-field>
                         <mat-label>Şifre</mat-label>
-                        <input matInput type="password" name="password" id="userLpassword" placeholder=""
+                        <input matInput type="password" name="password" minlength="3" maxlength="15" id="userLpassword" placeholder=""
                             [(ngModel)]="userLoginPassword">
                     </mat-form-field>
                 </mat-card-content>
@@ -42,12 +42,12 @@
                 <mat-card-content>
                     <mat-form-field>
                         <mat-label>Mail </mat-label>
-                        <input matInput type="email" name="mail" id="kurumLmail" placeholder="example@gmail.com"
+                        <input matInput type="email" minlength="10" maxlength="25" name="mail" id="kurumLmail" placeholder="example@gmail.com"
                             [(ngModel)]="kurumLoginMail">
                     </mat-form-field>
                     <mat-form-field>
                         <mat-label>Şifre </mat-label>
-                        <input matInput type="password" name="password" id="kurumLpassword" placeholder=""
+                        <input matInput type="password" minlength="3" maxlength="15" name="password" id="kurumLpassword" placeholder=""
                             [(ngModel)]="kurumLoginPassword">
                     </mat-form-field>
                 </mat-card-content>

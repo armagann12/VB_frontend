@@ -19,12 +19,12 @@
         <h1 class="text-xl">Mail:</h1>
         <mat-form-field class="w-1/2" appearance="fill">
             <mat-label>Mail</mat-label>
-            <input [(ngModel)]="mail" name="mail" matInput value="{{data.mail}}">
+            <input [(ngModel)]="mail" name="mail" type="mail" matInput value="{{data.mail}}">
         </mat-form-field>
         <h1 class="text-xl">TC Kimlik Numarası:</h1>
         <mat-form-field class="w-1/2" appearance="fill">
             <mat-label>TC</mat-label>
-            <input [(ngModel)]="tc" name="tc" matInput value="{{data.tc}}">
+            <input [(ngModel)]="tc" name="tc" type="number" min="10000000000" max="99999999999" matInput value="{{data.tc}}">
         </mat-form-field>
         <div class="flex"> 
             <button mat-button class="bg-lime-500" type="submit">Güncelle</button>
