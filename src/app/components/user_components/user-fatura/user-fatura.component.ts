@@ -30,6 +30,18 @@ export class UserFaturaComponent implements OnInit {
     this.invoiceService.getAllUsersInvoices().subscribe((res) => {
       this.initData = res
       this.currentData = this.initData.reverse()
+
+      //Birden fazla çekebilmesi lazım ama nasıl store edicek ve loop ile dönecek
+      
+      /*
+      const initId = sessionStorage.getItem("payed")
+      this.currentData = this.currentData.map((i: any) => {
+        if (i.id === initId) {
+          i.status = true
+        }
+        return i
+      })
+      */
     })
   }
 
@@ -62,6 +74,7 @@ export class UserFaturaComponent implements OnInit {
   }
 
   payInvoice(id: any) {
+
     const dialogRef = this.dialog.open(UserFaturaDialogPayComponent, {
       width: 'auto',
       data: { id: id },
@@ -78,6 +91,16 @@ export class UserFaturaComponent implements OnInit {
     }, ((err) => {
       console.log(err)
       this.toastr.success("Hata", "", { timeOut: 3000 })
+
+      /*
+      sessionStorage.setItem('payed', id)
+      this.currentData = this.currentData.map((i: any) => {
+        if (i.id === id) {
+          i.status = true
+        }
+        return i
+      })
+      */
     }));
 
   }
