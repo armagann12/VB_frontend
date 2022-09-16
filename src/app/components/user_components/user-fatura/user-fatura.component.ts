@@ -65,27 +65,18 @@ export class UserFaturaComponent implements OnInit {
   }
 
   invoiceDetail(id: any) {
-    // const arr = []
-    // const strItems = sessionStorage.getItem('payed')
-    // if (strItems == null) {
-    //   arr.push(id)
-    //   sessionStorage.setItem('payed', JSON.stringify(arr))
-    // } else {
-    //   const arrItems = JSON.parse(strItems)
-    //   arrItems.push(id)
-    //   sessionStorage.setItem('payed', JSON.stringify(arrItems))
-    // }
-
-    // this.currentData = this.currentData.map((i: any) => {
-    //   if (i.id === id) {
-    //     i.status = true
-    //   }
-    //   return i
-    // })
-
 
     this.invoiceService.getUserInvoice(id).subscribe((res: any) => {
       console.log(res)
+      const strItems = sessionStorage.getItem('payed')
+      if (strItems !== null) {
+        const arrItems = JSON.parse(strItems)
+        for (var j = 0; j < arrItems.length; j++) {
+          if (res.id === arrItems[j]) {
+            res.status = true
+          }
+        }
+      }
       this.userService.getKurum(res.institutionModelId).subscribe((response: any) => {
         const dialogRef = this.dialog.open(UserFaturaDialogComponent, {
           width: 'auto',
