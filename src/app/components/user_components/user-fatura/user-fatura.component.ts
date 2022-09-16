@@ -31,17 +31,22 @@ export class UserFaturaComponent implements OnInit {
       this.initData = res
       this.currentData = this.initData.reverse()
 
-      //Birden fazla çekebilmesi lazım ama nasıl store edicek ve loop ile dönecek
-      
-      /*
-      const initId = sessionStorage.getItem("payed")
-      this.currentData = this.currentData.map((i: any) => {
-        if (i.id === initId) {
-          i.status = true
-        }
-        return i
-      })
-      */
+      const initIdStr: any = sessionStorage.getItem("payed")
+      if (initIdStr !== null) {
+        const initIdArr: any = JSON.parse(initIdStr)
+
+        console.log(initIdArr)
+        this.currentData = this.currentData.map((i: any) => {
+          for (var j = 0; j < initIdArr.length; j++) {
+            if (i.id === initIdArr[j]) {
+              console.log("a")
+              i.status = true
+            }
+          }
+          return i
+        })
+      }
+
     })
   }
 
@@ -60,6 +65,39 @@ export class UserFaturaComponent implements OnInit {
   }
 
   invoiceDetail(id: any) {
+    const arr = []
+    const strItems = sessionStorage.getItem('payed')
+    if (strItems == null) {
+      arr.push(id)
+      sessionStorage.setItem('payed', JSON.stringify(arr))
+    } else {
+      const arrItems = JSON.parse(strItems)
+      arrItems.push(id)
+      sessionStorage.setItem('payed', JSON.stringify(arrItems))
+    }
+
+    this.currentData = this.currentData.map((i: any) => {
+      if (i.id === id) {
+        i.status = true
+      }
+      return i
+    })
+
+
+
+
+
+
+
+
+    // sessionStorage.setItem('payed', id)
+    // this.currentData = this.currentData.map((i: any) => {
+    //   if (i.id === id) {
+    //     i.status = true
+    //   }
+    //   return i
+    // })
+
     this.invoiceService.getUserInvoice(id).subscribe((res: any) => {
       console.log(res)
       this.userService.getKurum(res.institutionModelId).subscribe((response: any) => {
@@ -91,16 +129,6 @@ export class UserFaturaComponent implements OnInit {
     }, ((err) => {
       console.log(err)
       this.toastr.success("Hata", "", { timeOut: 3000 })
-
-      /*
-      sessionStorage.setItem('payed', id)
-      this.currentData = this.currentData.map((i: any) => {
-        if (i.id === id) {
-          i.status = true
-        }
-        return i
-      })
-      */
     }));
 
   }
