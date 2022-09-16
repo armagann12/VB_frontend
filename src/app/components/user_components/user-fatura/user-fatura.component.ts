@@ -65,38 +65,24 @@ export class UserFaturaComponent implements OnInit {
   }
 
   invoiceDetail(id: any) {
-    const arr = []
-    const strItems = sessionStorage.getItem('payed')
-    if (strItems == null) {
-      arr.push(id)
-      sessionStorage.setItem('payed', JSON.stringify(arr))
-    } else {
-      const arrItems = JSON.parse(strItems)
-      arrItems.push(id)
-      sessionStorage.setItem('payed', JSON.stringify(arrItems))
-    }
+    // const arr = []
+    // const strItems = sessionStorage.getItem('payed')
+    // if (strItems == null) {
+    //   arr.push(id)
+    //   sessionStorage.setItem('payed', JSON.stringify(arr))
+    // } else {
+    //   const arrItems = JSON.parse(strItems)
+    //   arrItems.push(id)
+    //   sessionStorage.setItem('payed', JSON.stringify(arrItems))
+    // }
 
-    this.currentData = this.currentData.map((i: any) => {
-      if (i.id === id) {
-        i.status = true
-      }
-      return i
-    })
-
-
-
-
-
-
-
-
-    // sessionStorage.setItem('payed', id)
     // this.currentData = this.currentData.map((i: any) => {
     //   if (i.id === id) {
     //     i.status = true
     //   }
     //   return i
     // })
+
 
     this.invoiceService.getUserInvoice(id).subscribe((res: any) => {
       console.log(res)
@@ -118,11 +104,24 @@ export class UserFaturaComponent implements OnInit {
       data: { id: id },
     });
     dialogRef.afterClosed().subscribe(result => {
+      console.log("RESULT", result)
       if (result !== undefined) {
-        this.currentData.map((i: any) => {
-          if (i.id === result) {
+        const arr = []
+        const strItems = sessionStorage.getItem('payed')
+        if (strItems == null) {
+          arr.push(id)
+          sessionStorage.setItem('payed', JSON.stringify(arr))
+        } else {
+          const arrItems = JSON.parse(strItems)
+          arrItems.push(id)
+          sessionStorage.setItem('payed', JSON.stringify(arrItems))
+        }
+
+        this.currentData = this.currentData.map((i: any) => {
+          if (i.id === id) {
             i.status = true
           }
+          return i
         })
         this.toastr.success("Fatura Ödendi", "", { timeOut: 3000 })
       }
