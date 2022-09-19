@@ -4,8 +4,14 @@
     <mat-icon aria-hidden="false" aria-label="Example logout icon" fontIcon="logout" class=""></mat-icon>
   </button>
 </mat-toolbar>
+<div class="mt-3">
+  <mat-form-field class="w-1/4" appearance="standard">
+      <mat-label>Search</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
+  </mat-form-field>
+</div>
 
-<div class="h-full">
+<div class="h-full -mt-2">
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 w-full h-full">
 
     <ng-container matColumnDef="name">

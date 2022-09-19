@@ -5,15 +5,24 @@
     <mat-icon aria-hidden="false" aria-label="Example logout icon" fontIcon="logout" class=""></mat-icon>
   </button>
 </mat-toolbar>
-<div class="mt-3 text-end">
-  <mat-form-field appearance="fill">
-    <mat-label>Fatura Durumu</mat-label>
-    <mat-select [(value)]="selected">
-      <mat-option (click)="allData()" value="all">Hepsi</mat-option>
-      <mat-option (click)="filterData(true)" value="true">Ödenmiş</mat-option>
-      <mat-option (click)="filterData(false)" value="false">Ödenmemiş</mat-option>
-    </mat-select>
-  </mat-form-field>
+
+<div class="mt-3 flex justify-between">
+  <div>
+    <mat-form-field class="w-full" appearance="standard">
+      <mat-label>Search</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Fatura Durumu</mat-label>
+      <mat-select [(value)]="selected">
+        <mat-option (click)="allData()" value="all">Hepsi</mat-option>
+        <mat-option (click)="filterData(true)" value="true">Ödenmiş</mat-option>
+        <mat-option (click)="filterData(false)" value="false">Ödenmemiş</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
 </div>
 <div class="h-full -mt-2">
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 w-full h-full flex-row-reverse">

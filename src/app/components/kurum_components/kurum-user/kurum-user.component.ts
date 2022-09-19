@@ -56,7 +56,7 @@ export class KurumUserComponent implements OnInit {
       data: { name: this.name, price: this.price, detail: this.detail, userModelId: id },
     });
     dialogRef.afterClosed().subscribe(result => {
-      if (result !== undefined) {
+      if (result !== undefined) { 
         if (result.name !== undefined && result.detail !== undefined && result.price !== undefined) {
           this.toastr.success("Fatura Eklendi", "", { timeOut: 3000 })
         } else {
@@ -65,4 +65,10 @@ export class KurumUserComponent implements OnInit {
       }
     });
   }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
 }
