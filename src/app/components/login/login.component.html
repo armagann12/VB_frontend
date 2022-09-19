@@ -7,8 +7,8 @@
                 <img src="https://play-lh.googleusercontent.com/NlkiylLyAWEaPYp_rc_RxypzewA9WOGbh6KShLhOKgv7O-vUYYVpCz9zVLzvsZY3rNY"
                     alt="Vakıfbank_Logo" width="75" height="75" class="block ml-auto mr-auto">
                 <div class="flex space-x-2 justify-center mb-6">
-                    <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
-                        <mat-button-toggle (click)="isUserFunc()" value="userL">Müşteri</mat-button-toggle>
+                    <mat-button-toggle-group class="mt-2" appearance="legacy" name="fontStyle" aria-label="Font Style">
+                        <mat-button-toggle class="bg-yellow-200" (click)="isUserFunc()" value="userL">Müşteri</mat-button-toggle>
                         <mat-button-toggle (click)="isKurumFunc()" value="kurumL">Kurum</mat-button-toggle>
                     </mat-button-toggle-group>
                 </div>
@@ -38,9 +38,9 @@
                 alt="Vakıfbank_Logo" width="75" height="75" class="block ml-auto mr-auto">
             <form (submit)="onKurumLoginSubmit()" class="text-center">
                 <div class="flex space-x-2 justify-center mb-6">
-                    <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+                    <mat-button-toggle-group class="mt-2" appearance="legacy" name="fontStyle" aria-label="Font Style">
                         <mat-button-toggle (click)="isUserFunc()" value="userL">Müşteri</mat-button-toggle>
-                        <mat-button-toggle (click)="isKurumFunc()" value="kurumL">Kurum</mat-button-toggle>
+                        <mat-button-toggle class="bg-yellow-200"  (click)="isKurumFunc()" value="kurumL">Kurum</mat-button-toggle>
                     </mat-button-toggle-group>
                 </div>
                 <mat-card-title>Kurum Girişi</mat-card-title>
