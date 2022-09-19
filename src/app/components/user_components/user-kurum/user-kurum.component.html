@@ -6,7 +6,7 @@
 </mat-toolbar>
 
 <div class="h-full">
-  <table mat-table [dataSource]="data" class="mat-elevation-z8 w-full h-full">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 w-full h-full">
 
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> Kurum Adı </th>
@@ -29,5 +29,6 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
+  <mat-paginator [pageSizeOptions]="[5, 10]" showFirstLastButtons aria-label="Select page of users"></mat-paginator>
 
 </div>

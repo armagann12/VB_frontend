@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { KurumService } from 'src/app/services/kurum.service';
@@ -17,12 +19,18 @@ export class KurumUserComponent implements OnInit {
   detail: any;
   price: any;
   displayedColumns: string[] = ['name', 'mail', 'icon', 'add'];
+  dataSource: any;
+
+  @ViewChild(MatPaginator)
+  paginator!: MatPaginator;
 
   constructor(private kurumService: KurumService, private router: Router, public dialog: MatDialog, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.kurumService.getAllUsers().subscribe((res) => {
       this.data = res
+      this.dataSource = new MatTableDataSource<any>(this.data);
+      this.dataSource.paginator = this.paginator;
     })
   }
 

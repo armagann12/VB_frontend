@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 import { UserKurumDialogComponent } from '../user-kurum-dialog/user-kurum-dialog.component';
@@ -12,6 +14,10 @@ import { UserKurumDialogComponent } from '../user-kurum-dialog/user-kurum-dialog
 export class UserKurumComponent implements OnInit {
   data: any;
   displayedColumns: string[] = ['name', 'mail', 'icon'];
+  dataSource: any;
+
+  @ViewChild(MatPaginator)
+  paginator!: MatPaginator;  
 
 
   constructor(private userService: UserService, private router: Router, public dialog: MatDialog) { }
@@ -19,6 +25,8 @@ export class UserKurumComponent implements OnInit {
   ngOnInit(): void {
     this.userService.getAllKurum().subscribe((res) =>{
       this.data = res
+      this.dataSource = new MatTableDataSource<any>(this.data);
+      this.dataSource.paginator = this.paginator;
     })
   }
   logout() {
