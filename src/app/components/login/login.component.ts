@@ -98,7 +98,7 @@ export class LoginComponent implements OnInit {
   }
 
   getUrl() {
-    return "url('https://t3.ftcdn.net/jpg/02/94/27/70/360_F_294277006_pFDh10OfLuej79sFedbidqrmtYImSeu8.jpg')";
+    return "url('https://i.pinimg.com/originals/03/0c/f7/030cf72efedb776cc684049a358e0b47.png')";
   }
 
 }
