@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { InvoiceService } from 'src/app/services/invoice.service';
@@ -7,6 +7,8 @@ import { KurumFaturaDialogDeleteComponent } from '../kurum-fatura-dialog-delete/
 import { KurumFaturaDialogComponent } from '../kurum-fatura-dialog/kurum-fatura-dialog.component';
 import { ToastrService } from 'ngx-toastr';
 import { timeout } from 'rxjs';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 @Component({
   selector: 'app-kurum-fatura',
   templateUrl: './kurum-fatura.component.html',
@@ -17,6 +19,10 @@ export class KurumFaturaComponent implements OnInit {
   currentData: any;
   selected: any = 'all';
   displayedColumns: string[] = ['name', 'price', 'status', 'icon', 'delete'];
+  dataSource: any;
+
+  @ViewChild(MatPaginator)
+  paginator!: MatPaginator;
 
   constructor(private invoiceService: InvoiceService, private router: Router,
     private kurumService: KurumService, public dialog: MatDialog, private toastr: ToastrService) { }
@@ -25,16 +31,25 @@ export class KurumFaturaComponent implements OnInit {
     this.invoiceService.getAllKurumInvoices().subscribe((res) => {
       this.initData = res
       this.currentData = this.initData.reverse()
+      this.dataSource = new MatTableDataSource<any>(this.currentData);
+      this.dataSource.paginator = this.paginator;
+
     })
   }
 
   allData() {
     this.currentData = this.initData
+    this.dataSource = new MatTableDataSource<any>(this.currentData);
+    this.dataSource.paginator = this.paginator;
+
   }
 
   filterData(stat: any) {
     const newData = this.initData.filter((data: any) => data.status === stat)
     this.currentData = newData
+    this.dataSource = new MatTableDataSource<any>(this.currentData);
+    this.dataSource.paginator = this.paginator;
+
   }
 
   logout() {
@@ -63,6 +78,8 @@ export class KurumFaturaComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if(result !== undefined){
         this.currentData = this.currentData.filter((a: any) => a.id !== result)
+        this.dataSource = new MatTableDataSource<any>(this.currentData);
+        this.dataSource.paginator = this.paginator;  
         this.toastr.success("Fatura Silindi","", {timeOut: 3000})
       }
     }, ((err) => {

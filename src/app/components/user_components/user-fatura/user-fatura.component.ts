@@ -18,31 +18,38 @@ import { MatTableDataSource } from '@angular/material/table';
 export class UserFaturaComponent implements OnInit {
   initData: any;
   currentData: any;
+  dataSource: any;
   selected: any = 'all';
   displayedColumns: string[] = ['name', 'price', 'status', 'icon', 'pay'];
   clickedRows = new Set<any>();
 
+  @ViewChild(MatPaginator)
+  paginator!: MatPaginator;
+
+
   constructor(private invoiceService: InvoiceService, private router: Router,
     public dialog: MatDialog, private userService: UserService, private toastr: ToastrService) { }
 
-
   ngOnInit(): void {
+
     this.invoiceService.getAllUsersInvoices().subscribe((res) => {
       this.initData = res
       this.currentData = this.initData.reverse()
+      this.dataSource = new MatTableDataSource<any>(this.currentData);
+      this.dataSource.paginator = this.paginator;
 
       const initIdStr: any = sessionStorage.getItem("payed")
       if (initIdStr !== null) {
         const initIdArr: any = JSON.parse(initIdStr)
 
-        console.log(initIdArr)
         this.currentData = this.currentData.map((i: any) => {
           for (var j = 0; j < initIdArr.length; j++) {
             if (i.id === initIdArr[j]) {
-              console.log("a")
               i.status = true
             }
           }
+          this.dataSource = new MatTableDataSource<any>(this.currentData);
+          this.dataSource.paginator = this.paginator;
           return i
         })
       }
@@ -52,11 +59,15 @@ export class UserFaturaComponent implements OnInit {
 
   allData() {
     this.currentData = this.initData
+    this.dataSource = new MatTableDataSource<any>(this.currentData);
+    this.dataSource.paginator = this.paginator;
   }
 
   filterData(stat: any) {
     const newData = this.initData.filter((data: any) => data.status === stat)
     this.currentData = newData
+    this.dataSource = new MatTableDataSource<any>(this.currentData);
+    this.dataSource.paginator = this.paginator;
   }
 
   logout() {
@@ -67,7 +78,6 @@ export class UserFaturaComponent implements OnInit {
   invoiceDetail(id: any) {
 
     this.invoiceService.getUserInvoice(id).subscribe((res: any) => {
-      console.log(res)
       const strItems = sessionStorage.getItem('payed')
       if (strItems !== null) {
         const arrItems = JSON.parse(strItems)
@@ -95,7 +105,6 @@ export class UserFaturaComponent implements OnInit {
       data: { id: id },
     });
     dialogRef.afterClosed().subscribe(result => {
-      console.log("RESULT", result)
       if (result !== undefined) {
         const arr = []
         const strItems = sessionStorage.getItem('payed')
@@ -114,6 +123,8 @@ export class UserFaturaComponent implements OnInit {
           }
           return i
         })
+        this.dataSource = new MatTableDataSource<any>(this.currentData);
+        this.dataSource.paginator = this.paginator;
         this.toastr.success("Fatura Ödendi", "", { timeOut: 3000 })
       }
     }, ((err) => {

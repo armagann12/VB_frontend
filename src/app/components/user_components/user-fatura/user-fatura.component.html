@@ -5,7 +5,7 @@
     <mat-icon aria-hidden="false" aria-label="Example logout icon" fontIcon="logout" class=""></mat-icon>
   </button>
 </mat-toolbar>
-<div class="mt-4 text-end">
+<div class="mt-3 text-end">
   <mat-form-field appearance="fill">
     <mat-label>Fatura Durumu</mat-label>
     <mat-select [(value)]="selected">
@@ -15,8 +15,8 @@
     </mat-select>
   </mat-form-field>
 </div>
-<div class="h-full">
-  <table mat-table [dataSource]="currentData" class="mat-elevation-z8 w-full h-full flex-row-reverse">
+<div class="h-full -mt-2">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 w-full h-full flex-row-reverse">
 
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> Fatura Adı </th>
@@ -55,5 +55,5 @@
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 
   </table>
-
+  <mat-paginator [pageSizeOptions]="[5, 10]" showFirstLastButtons aria-label="Select page of users"></mat-paginator>
 </div>
