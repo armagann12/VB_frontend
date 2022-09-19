@@ -77,7 +77,7 @@ export class KurumFaturaComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       if(result !== undefined){
-        this.currentData = this.currentData.filter((a: any) => a.id !== result)
+        this.currentData.splice(this.currentData.findIndex((a: any) => a.id === result), 1)
         this.dataSource = new MatTableDataSource<any>(this.currentData);
         this.dataSource.paginator = this.paginator;  
         this.toastr.success("Fatura Silindi","", {timeOut: 3000})
