@@ -38,7 +38,9 @@ export class UserFaturaDialogPayComponent implements OnInit {
       this.data.id = undefined
     } else {
       this.invoiceService.payInvoice(id).subscribe((res) =>{
-        //cardBalance azalıcak burada
+        this.userService.uploadMoneyToCard(this.chosenCard, -this.invoicePrice).subscribe((res) => {
+          console.log(res)
+        })
       })
     }
   }
