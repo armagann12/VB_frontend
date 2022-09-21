@@ -59,6 +59,22 @@ export class UserService {
     return req
   }
 
+  public addCard(bankName: any) {
+    const token = localStorage.getItem("token")
+
+    const body = {
+      bankName
+    }
+
+    const headers: any = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    }
+
+    const req = this.httpClient.post(this.SERVER + 'user/card', body, { headers: headers })
+    return req
+  }
+
   public getMyCards() {
     const token = localStorage.getItem("token")
     const headers: any = {

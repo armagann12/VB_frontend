@@ -1,1 +1,24 @@
-<p>user-card-dialog-add works!</p>
+<h3 mat-dialog-title class="text-center">Kredi Kartı Ekle</h3>
+<div mat-dialog-content>
+    <div>
+        <form (submit)="addCard()" class="overflow-hidden text-sm">
+            <h1 class="text-l mt-3">Banka Adı:</h1>
+            <mat-form-field class="w-auto" appearance="fill">
+                <mat-label>Banka Adı</mat-label>
+                <input [(ngModel)]="data.bankName" required minlength="5" maxlength="20" name="name" matInput>
+            </mat-form-field>
+            
+            
+            <div class="flex justify-between">
+                <div mat-dialog-actions>
+                    <button class="bg-slate-400" mat-button [mat-dialog-close]="" cdkFocusInitial>Cancel</button>
+                </div>
+                <div mat-dialog-actions>
+                    <button type="submit" class="bg-blue-600    " mat-button [mat-dialog-close]="data"
+                        cdkFocusInitial>Add</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
