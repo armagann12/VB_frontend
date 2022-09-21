@@ -58,4 +58,44 @@ export class UserService {
     const req = this.httpClient.put(this.SERVER + `user/me`, body, { headers: headers })
     return req
   }
+
+  public getMyCards() {
+    const token = localStorage.getItem("token")
+    const headers: any = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    }
+    const req = this.httpClient.get(this.SERVER + `user/card/me`, { headers: headers })
+    return req
+  }
+
+  public getMyCard(id: string) {
+    const token = localStorage.getItem("token")
+    const headers: any = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    }
+    const req = this.httpClient.get(this.SERVER + `user/card/me/${id}`, { headers: headers })
+    return req
+  }
+
+  public deleteMyCard(id: string) {
+    const token = localStorage.getItem("token")
+    const headers: any = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    }
+    const req = this.httpClient.delete(this.SERVER + `user/card/me/${id}`, { headers: headers })
+    return req
+  }
+
+  public uploadMoneyToCard(id: string, money: any) {
+    const token = localStorage.getItem("token")
+    const headers: any = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    }
+    const req = this.httpClient.get(this.SERVER + `user/card/me/money/${id}/${money}`, { headers: headers })
+    return req
+  }
 }

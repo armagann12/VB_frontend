@@ -6,6 +6,7 @@ import { KurumUserComponent } from './components/kurum_components/kurum-user/kur
 import { KurumComponent } from './components/kurum_components/kurum/kurum.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { UserCardComponent } from './components/user_components/user-card/user-card.component';
 import { UserFaturaComponent } from './components/user_components/user-fatura/user-fatura.component';
 import { UserInfoComponent } from './components/user_components/user-info/user-info.component';
 import { UserKurumComponent } from './components/user_components/user-kurum/user-kurum.component';
@@ -31,6 +32,7 @@ const routes: Routes = [
     }, children: [
       { path: 'info', component: UserInfoComponent },
       { path: 'fatura', component: UserFaturaComponent },
+      { path: 'card', component: UserCardComponent },
       { path: 'kurum', component: UserKurumComponent }
     ]
   },

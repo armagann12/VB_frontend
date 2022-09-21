@@ -1,0 +1,27 @@
+<mat-toolbar>
+    <span class="m-auto">Kredi Kartlarım</span>
+    <button mat-button (click)="logout()" class="bg-red-500">Çıkış
+        <mat-icon aria-hidden="false" aria-label="Example logout icon" fontIcon="logout" class=""></mat-icon>
+    </button>
+</mat-toolbar>
+
+<div>
+    <button (click)="addCard()" mat-button class="bg-blue-600">Kart ekle</button>
+</div>
+
+
+<div *ngFor="let card of myCards">
+    <mat-card class="max-w-xs bg-yellow-100 mt-2">
+        <mat-card-title>{{card.bankName}}</mat-card-title>
+        <mat-card-subtitle>{{card.userName}}</mat-card-subtitle>
+        <mat-card-content>
+            <p>{{card.number}}</p> 
+            <p>validDate: {{card.validDate}}</p>
+            <p>CVC: {{card.cvc}}</p>
+        </mat-card-content>
+        <mat-card-actions>
+            <button (click)="deleteCard(card.id)" mat-button class="bg-red-500">Sil</button>
+            <button (click)="moneyCard(card.id)" mat-button class="bg-green-600">Para Yükle</button>
+        </mat-card-actions>
+    </mat-card>
+</div>

@@ -12,6 +12,7 @@ export class UserComponent implements OnInit {
   fatura: any = "fatura";
   info: any = "info";
   kurum: any = "kurum";
+  card: any = "card";
 
   constructor(private router: Router, private userService: UserService, private invoiceService: InvoiceService) { }
 

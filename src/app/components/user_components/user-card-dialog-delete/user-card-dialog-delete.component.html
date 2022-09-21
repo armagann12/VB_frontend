@@ -1,0 +1,11 @@
+<h1 class="text-center" mat-dialog-title>Bu faturayı silmek<br> istediğine emin misin?</h1>
+<div class="flex justify-between">
+    <div mat-dialog-actions>
+        <button class="bg-slate-400" mat-button [mat-dialog-close]="" cdkFocusInitial>Cancel</button>
+    </div>
+
+    <div mat-dialog-actions>
+        <button (click)="deleteCard(data.id)" class="bg-red-600 ml-8" mat-button [mat-dialog-close]="data.id"
+            cdkFocusInitial>Delete</button>
+    </div>
+</div>

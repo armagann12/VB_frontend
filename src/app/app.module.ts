@@ -37,6 +37,10 @@ import { UserFaturaDialogPayComponent } from './components/user_components/user-
 import { MatPaginatorModule } from '@angular/material/paginator';
 
 import { ToastrModule } from 'ngx-toastr';
+import { UserCardComponent } from './components/user_components/user-card/user-card.component';
+import { UserCardDialogAddComponent } from './components/user_components/user-card-dialog-add/user-card-dialog-add.component';
+import { UserCardDialogDeleteComponent } from './components/user_components/user-card-dialog-delete/user-card-dialog-delete.component';
+import { UserCardDialogMoneyComponent } from './components/user_components/user-card-dialog-money/user-card-dialog-money.component';
 
 
 
@@ -60,6 +64,10 @@ import { ToastrModule } from 'ngx-toastr';
     KurumFaturaDialogDeleteComponent,
     KurumUserDialogAddComponent,
     UserFaturaDialogPayComponent,
+    UserCardComponent,
+    UserCardDialogAddComponent,
+    UserCardDialogDeleteComponent,
+    UserCardDialogMoneyComponent,
     
     
   ],
