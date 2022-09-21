@@ -51,7 +51,11 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['user']);
       }, (error) => {
         console.log(error)
-        this.toastr.error("Hata", "", { timeOut: 3000 })
+        if (error.error.length > 30) {
+          this.toastr.error(`${JSON.parse(error.error).errors.Mail[0]}`, `${JSON.parse(error.error).title}`, { timeOut: 3000 })
+        } else {
+          this.toastr.error(`${error.error}`, "Hata", { timeOut: 3000 })
+        }
       }
       )
     }
@@ -81,7 +85,11 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['kurum']);
       }, (error) => {
         console.log(error)
-        this.toastr.error("Hata", "", { timeOut: 3000 })
+        if (error.error.length > 30) {
+          this.toastr.error(`${JSON.parse(error.error).errors.Mail[0]}`, `${JSON.parse(error.error).title}`, { timeOut: 3000 })
+        } else {
+          this.toastr.error(`${error.error}`, "Hata", { timeOut: 3000 })
+        } 
       })
     }
 
