@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { UserService } from 'src/app/services/user.service';
 import { UserCardDialogAddComponent } from '../user-card-dialog-add/user-card-dialog-add.component';
 import { UserCardDialogDeleteComponent } from '../user-card-dialog-delete/user-card-dialog-delete.component';
+import { UserCardDialogMoneyComponent } from '../user-card-dialog-money/user-card-dialog-money.component';
 
 @Component({
   selector: 'app-user-card',
@@ -21,7 +22,6 @@ export class UserCardComponent implements OnInit {
 
   ngOnInit(): void {
     this.userService.getMyCards().subscribe((res: any) => {
-      console.log(res, 'res')
       this.myCards = res
       console.log(this.myCards, 'cards')
     })
@@ -38,7 +38,6 @@ export class UserCardComponent implements OnInit {
       data: { bankName: this.bankName },
     });
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result, "result")
       if (result !== undefined) {
         if (result.bankName !== undefined) {
           this.toastr.success("Card Eklendi", "", { timeOut: 3000 })
@@ -55,7 +54,6 @@ export class UserCardComponent implements OnInit {
       data: { id: id },
     });
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result)
       if (result !== undefined) {
         this.myCards = this.myCards.filter(el => el.id !== result)
       }
@@ -66,6 +64,20 @@ export class UserCardComponent implements OnInit {
   }
 
   moneyCard(id: any) {
-
+    this.userService.getMyCard(id).subscribe((res) => {
+      const dialogRef = this.dialog.open(UserCardDialogMoneyComponent, {
+        width: 'auto',
+        data: { ...res },
+      });
+      dialogRef.afterClosed().subscribe(result => {
+        console.log(result, 'döndü')
+        if (result !== undefined) {
+          this.toastr.success("Para Eklendi", "", { timeOut: 3000 })
+        } else {
+          this.toastr.error("Hata", "", { timeOut: 3000 })
+        }
+      }
+      );
+    })
   }
 }

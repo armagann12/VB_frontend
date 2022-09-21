@@ -1,1 +1,26 @@
-<p>user-card-dialog-money works!</p>
+<h3 mat-dialog-title class="text-center">Kredi Kartın</h3>
+<div mat-dialog-content>
+    <div>
+        <form (submit)="moneyCard(data.id)" class="overflow-hidden text-sm">
+            <h1 class="text-lg mt-3 text-center ">Bakiyeniz : {{data.balance}}  TL</h1>
+            
+            <h3 class="mt-4">Yüklemek istediğiniz miktar:</h3>
+            <mat-form-field class="w-auto" appearance="fill">
+                <mat-label>Bakiye</mat-label>
+                <input [(ngModel)]="this.money" required minlength="5" maxlength="20" name="name" matInput>
+            </mat-form-field>
+            
+            
+            <div class="flex justify-between">
+                <div mat-dialog-actions>
+                    <button class="bg-slate-400" mat-button [mat-dialog-close]="" cdkFocusInitial>Cancel</button>
+                </div>
+                <div mat-dialog-actions>
+                    <button type="submit" class="bg-blue-600    " mat-button [mat-dialog-close]="data"
+                        cdkFocusInitial>Yükle</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
