@@ -13,7 +13,6 @@ export class UserCardDialogAddComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any, private userService: UserService) { }
 
   ngOnInit(): void {
-
   }
 
   addCard() {

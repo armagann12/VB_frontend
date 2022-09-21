@@ -98,14 +98,15 @@ export class UserFaturaComponent implements OnInit {
     })
   }
 
-  payInvoice(id: any) {
+  payInvoice(id: any, price: any) {
 
     const dialogRef = this.dialog.open(UserFaturaDialogPayComponent, {
       width: 'auto',
-      data: { id: id },
+      data: { id: id, price: price },
     });
     dialogRef.afterClosed().subscribe(result => {
-      if (result !== undefined) {
+      console.log(result, 'resssss')
+      if (result !== undefined && result.id !== undefined) {
         const arr = []
         const strItems = sessionStorage.getItem('payed')
         if (strItems == null) {
@@ -129,7 +130,7 @@ export class UserFaturaComponent implements OnInit {
       }
     }, ((err) => {
       console.log(err)
-      this.toastr.success("Hata", "", { timeOut: 3000 })
+      this.toastr.error("Hata", "", { timeOut: 3000 })
     }));
 
   }

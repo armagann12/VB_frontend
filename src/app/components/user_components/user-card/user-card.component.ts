@@ -54,6 +54,7 @@ export class UserCardComponent implements OnInit {
       data: { id: id },
     });
     dialogRef.afterClosed().subscribe(result => {
+      console.log(result)
       if (result !== undefined) {
         this.myCards = this.myCards.filter(el => el.id !== result)
       }
@@ -70,14 +71,15 @@ export class UserCardComponent implements OnInit {
         data: { ...res },
       });
       dialogRef.afterClosed().subscribe(result => {
-        console.log(result, 'döndü')
         if (result !== undefined) {
           this.toastr.success("Para Eklendi", "", { timeOut: 3000 })
-        } else {
-          this.toastr.error("Hata", "", { timeOut: 3000 })
         }
       }
       );
+    }, ((err) => {
+      this.toastr.error("Hata", "", { timeOut: 3000 })
+      console.log(err)
     })
+    )
   }
 }

@@ -1,10 +1,32 @@
-<h1 mat-dialog-title class="text-center">Bu faturayı ödemek <br> istediğine emin misin?</h1>
-<div class="flex justify-between">
-    <div mat-dialog-actions>
-        <button class="bg-slate-400" mat-button [mat-dialog-close]="" cdkFocusInitial>İptal</button>
+<div *ngIf="chosenCard !== undefined">
+    <h1 mat-dialog-title class="text-center">Bu faturayı ödemek <br> istediğine emin misin?</h1>
+    <div class="flex justify-between">
+        <div mat-dialog-actions>
+            <button class="bg-slate-400" mat-button [mat-dialog-close]="" cdkFocusInitial>İptal</button>
+        </div>
+        <div mat-dialog-actions>
+            <div>
+                <button (click)="payInvoice(data.id)" disabled="false" class="bg-yellow-400" mat-button
+                    [mat-dialog-close]="data" cdkFocusInitial>Öde</button>
+            </div>
+        </div>
     </div>
-    <div mat-dialog-actions>
-        <button (click)="payInvoice(data.id)" class="bg-yellow-400" mat-button [mat-dialog-close]="data.id"
-            cdkFocusInitial>Öde</button>
+</div>
+
+<div *ngIf="chosenCard === undefined">
+    <h1 mat-dialog-title class="text-center">Ödemeyi Yapmak isteiğin <br> kredi kartını seç</h1>
+    <div class="flex justify-center" *ngFor="let card of myCards">
+        <mat-card (click)="chooseCard(card.id)" class="max-w-xs mt-2 bg-slate-200 hover:shadow-xl cursor-pointer">{{card.bankName}} <br class="text-xs"> {{card.number}} </mat-card>
+    </div>
+    <div class="flex justify-between">
+        <div mat-dialog-actions>
+            <button class="bg-slate-400" mat-button [mat-dialog-close]="" cdkFocusInitial>İptal</button>
+        </div>
+        <div mat-dialog-actions>
+            <div>
+                <button (click)="payInvoice(data.id)" disabled="true" class="bg-yellow-400" mat-button
+                    [mat-dialog-close]="data.id" cdkFocusInitial>Öde</button>
+            </div>
+        </div>
     </div>
 </div>

@@ -5,7 +5,7 @@
     </button>
 </mat-toolbar>
 
-<div>
+<div *ngIf="myCards.length < 2">
     <button (click)="addCard()" mat-button class="bg-blue-600">Kart ekle</button>
 </div>
 
