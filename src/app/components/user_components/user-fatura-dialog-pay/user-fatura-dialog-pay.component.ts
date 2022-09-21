@@ -30,8 +30,6 @@ export class UserFaturaDialogPayComponent implements OnInit {
   payInvoice(id: any) {
     const cardBalance = this.chosenCardDetail.balance
 
-    console.log(cardBalance, this.invoicePrice)
-
     if (cardBalance < this.invoicePrice) {
       this.toastr.error("Yetersiz Bakiye", "", { timeOut: 3000 })
       this.router.navigate(['user/card']);
@@ -39,7 +37,6 @@ export class UserFaturaDialogPayComponent implements OnInit {
     } else {
       this.invoiceService.payInvoice(id).subscribe((res) =>{
         this.userService.uploadMoneyToCard(this.chosenCard, -this.invoicePrice).subscribe((res) => {
-          console.log(res)
         })
       })
     }

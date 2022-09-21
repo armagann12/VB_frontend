@@ -105,7 +105,6 @@ export class UserFaturaComponent implements OnInit {
       data: { id: id, price: price },
     });
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result, 'resssss')
       if (result !== undefined && result.id !== undefined) {
         const arr = []
         const strItems = sessionStorage.getItem('payed')

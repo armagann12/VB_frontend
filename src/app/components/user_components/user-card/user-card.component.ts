@@ -23,7 +23,6 @@ export class UserCardComponent implements OnInit {
   ngOnInit(): void {
     this.userService.getMyCards().subscribe((res: any) => {
       this.myCards = res
-      console.log(this.myCards, 'cards')
     })
   }
 
@@ -54,7 +53,6 @@ export class UserCardComponent implements OnInit {
       data: { id: id },
     });
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result)
       if (result !== undefined) {
         this.myCards = this.myCards.filter(el => el.id !== result)
       }
@@ -72,7 +70,7 @@ export class UserCardComponent implements OnInit {
       });
       dialogRef.afterClosed().subscribe(result => {
         if (result !== undefined) {
-          this.toastr.success("Para Eklendi", "", { timeOut: 3000 })
+          this.toastr.success("Para Yüklendi", "", { timeOut: 3000 })
         }
       }
       );

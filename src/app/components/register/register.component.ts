@@ -61,7 +61,7 @@ export class RegisterComponent implements OnInit {
       this.router.navigate(['login']);
     }, ((err) => {
       this.toastr.error("Hata", "", { timeOut: 3000 })
-      console.log(err)
+      console.log(err.error)
     }))
   }
 
