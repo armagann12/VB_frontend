@@ -60,7 +60,7 @@ export class KurumUserComponent implements OnInit {
         if (result.name !== undefined && result.detail !== undefined && result.price !== undefined) {
           this.toastr.success("Fatura Eklendi", "", { timeOut: 3000 })
         } else {
-          this.toastr.error("Hata", "", { timeOut: 3000 })
+          this.toastr.error("One or more validation errors occurred.", "Hata", { timeOut: 3000 })
         }
       }
     });

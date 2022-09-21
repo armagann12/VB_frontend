@@ -43,11 +43,15 @@ export class RegisterComponent implements OnInit {
       this.lastName,
       this.tc
     ).subscribe((res) => {
-      this.toastr.success("Başarıyla Kaydınız Alınmıştır", "", { timeOut: 3000 }) 
+      this.toastr.success("Başarıyla Kaydınız Alınmıştır", "", { timeOut: 3000 })
       this.router.navigate(['login']);
     }, ((err) => {
-      this.toastr.error("Hata", "", { timeOut: 3000 })
       console.log(err)
+      if (err.error.length > 30) {
+        this.toastr.error(`${JSON.parse(err.error).title}`, `Hata`, { timeOut: 3000 })
+      } else {
+        this.toastr.error(`${err.error}`, "Hata", { timeOut: 3000 })
+      }
     }))
   }
 
@@ -60,8 +64,12 @@ export class RegisterComponent implements OnInit {
       this.toastr.success("Başarıyla Kaydınız Alınmıştır", "", { timeOut: 3000 })
       this.router.navigate(['login']);
     }, ((err) => {
-      this.toastr.error("Hata", "", { timeOut: 3000 })
-      console.log(err.error)
+      console.log(err)
+      if (err.error.length > 30) {
+        this.toastr.error(`${JSON.parse(err.error).title}`, `Hata`, { timeOut: 3000 })
+      } else {
+        this.toastr.error(`${err.error}`, "Hata", { timeOut: 3000 })
+      }
     }))
   }
 

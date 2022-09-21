@@ -42,7 +42,7 @@ export class UserCardComponent implements OnInit {
           this.toastr.success("Card Eklendi", "", { timeOut: 3000 })
           this.myCards = [...this.myCards, result]
         } else {
-          this.toastr.error("Hata", "", { timeOut: 3000 })
+          this.toastr.error("One or more validation errors occurred.", "Hata", { timeOut: 3000 })
         }
       }
     });

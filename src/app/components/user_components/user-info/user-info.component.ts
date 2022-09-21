@@ -40,7 +40,7 @@ export class UserInfoComponent implements OnInit {
       this.toastr.success("Bilgiler Güncellendi", "", { timeOut: 2000 })
     }, ((err) => {
       console.log(err)
-      this.toastr.error("Hata", "", { timeOut: 2000 })
+      this.toastr.error(err.error.title, "Hata", { timeOut: 2000 })
 
     }))
   }

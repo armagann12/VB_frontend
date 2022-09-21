@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
       }, (error) => {
         console.log(error)
         if (error.error.length > 30) {
-          this.toastr.error(`${JSON.parse(error.error).errors.Mail[0]}`, `${JSON.parse(error.error).title}`, { timeOut: 3000 })
+          this.toastr.error(`${JSON.parse(error.error).title}`, `Hata`, { timeOut: 3000 })
         } else {
           this.toastr.error(`${error.error}`, "Hata", { timeOut: 3000 })
         }
@@ -86,7 +86,7 @@ export class LoginComponent implements OnInit {
       }, (error) => {
         console.log(error)
         if (error.error.length > 30) {
-          this.toastr.error(`${JSON.parse(error.error).errors.Mail[0]}`, `${JSON.parse(error.error).title}`, { timeOut: 3000 })
+          this.toastr.error(`${JSON.parse(error.error).title}`, `Hata`, { timeOut: 3000 })
         } else {
           this.toastr.error(`${error.error}`, "Hata", { timeOut: 3000 })
         } 
