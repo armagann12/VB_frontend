@@ -56,9 +56,13 @@ export class KurumUserComponent implements OnInit {
       data: { name: this.name, price: this.price, detail: this.detail, userModelId: id },
     });
     dialogRef.afterClosed().subscribe(result => {
-      if (result !== undefined) { 
+      if (result !== undefined) {
         if (result.name !== undefined && result.detail !== undefined && result.price !== undefined) {
-          this.toastr.success("Fatura Eklendi", "", { timeOut: 3000 })
+          if (result.price < 1) {
+            this.toastr.error("One or more validation errors occurred.", "Hata", { timeOut: 3000 })
+          } else {
+            this.toastr.success("Fatura Eklendi", "", { timeOut: 3000 })
+          }
         } else {
           this.toastr.error("One or more validation errors occurred.", "Hata", { timeOut: 3000 })
         }
