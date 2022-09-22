@@ -7,7 +7,7 @@
             <h3 class="mt-4">Yüklemek istediğiniz miktar:</h3>
             <mat-form-field class="w-auto" appearance="fill">
                 <mat-label>Bakiye</mat-label>
-                <input [(ngModel)]="this.money" required minlength="5" maxlength="20" name="name" matInput>
+                <input [(ngModel)]="this.money" type="number" required min="0" max="100000" name="name" matInput>
             </mat-form-field>
             
             

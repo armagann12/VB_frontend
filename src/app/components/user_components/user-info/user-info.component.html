@@ -9,17 +9,17 @@
         <h1 class="text-xl">Ad:</h1>
         <mat-form-field class="w-1/2" appearance="fill">
             <mat-label>Ad</mat-label>
-            <input [(ngModel)]="firstName" name="firstName" matInput value="{{data.firstName}}">
+            <input [(ngModel)]="firstName" maxlength="20" name="firstName" matInput value="{{data.firstName}}">
         </mat-form-field>
         <h1 class="text-xl">Soyad:</h1>
         <mat-form-field class="w-1/2" appearance="fill">
             <mat-label>Soyad</mat-label>
-            <input [(ngModel)]="lastName" name="lastName" matInput value="{{data.lastName}}">
+            <input [(ngModel)]="lastName" maxlength="20" name="lastName" matInput value="{{data.lastName}}">
         </mat-form-field>
         <h1 class="text-xl">Mail:</h1>
         <mat-form-field class="w-1/2" appearance="fill">
             <mat-label>Mail</mat-label>
-            <input [(ngModel)]="mail" name="mail" type="mail" matInput value="{{data.mail}}">
+            <input [(ngModel)]="mail" maxlength="30" name="mail" type="mail" matInput value="{{data.mail}}">
         </mat-form-field>
         <h1 class="text-xl">TC Kimlik Numarası:</h1>
         <mat-form-field class="w-1/2" appearance="fill">

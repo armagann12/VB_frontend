@@ -69,6 +69,7 @@ export class UserCardComponent implements OnInit {
         data: { ...res },
       });
       dialogRef.afterClosed().subscribe(result => {
+        console.log(result)
         if (result !== undefined) {
           this.toastr.success("Para Yüklendi", "", { timeOut: 3000 })
         }
