@@ -70,7 +70,11 @@ export class UserCardComponent implements OnInit {
       });
       dialogRef.afterClosed().subscribe(result => {
         if (result !== undefined) {
-          this.toastr.success("Para Yüklendi", "", { timeOut: 3000 })
+          if(result.balance === undefined){
+            this.toastr.error("Geçerli Bir sayı girin", "Hata", { timeOut: 3000 })
+          }else{
+            this.toastr.success("Para Yüklendi", "", { timeOut: 3000 })
+          }
         }
       }
       );

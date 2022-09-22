@@ -17,8 +17,13 @@ export class UserCardDialogMoneyComponent implements OnInit {
   }
 
   moneyCard(id:any){
-    this.userService.uploadMoneyToCard(id, parseInt(this.money)).subscribe((res) =>{
-
-    })
+    
+    if(this.money > 0){
+      this.userService.uploadMoneyToCard(id, parseInt(this.money)).subscribe((res) =>{
+  
+      })
+    }else{
+      this.data.balance = undefined
+    }
   }
 }
