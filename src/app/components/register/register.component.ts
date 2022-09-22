@@ -49,6 +49,8 @@ export class RegisterComponent implements OnInit {
       console.log(err)
       if (err.error.length > 30) {
         this.toastr.error(`${JSON.parse(err.error).title}`, `Hata`, { timeOut: 3000 })
+      } else if (err.error.includes("duplicate key")) {
+        this.toastr.error(`Duplicate Key`, `Hata`, { timeOut: 3000 })
       } else {
         this.toastr.error(`${err.error}`, "Hata", { timeOut: 3000 })
       }
@@ -67,6 +69,8 @@ export class RegisterComponent implements OnInit {
       console.log(err)
       if (err.error.length > 30) {
         this.toastr.error(`${JSON.parse(err.error).title}`, `Hata`, { timeOut: 3000 })
+      } else if (err.error.includes("duplicate key")) {
+        this.toastr.error(`Duplicate Key`, `Hata`, { timeOut: 3000 })
       } else {
         this.toastr.error(`${err.error}`, "Hata", { timeOut: 3000 })
       }
