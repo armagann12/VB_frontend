@@ -24,7 +24,7 @@
         <h1 class="text-xl">TC Kimlik Numarası:</h1>
         <mat-form-field class="w-1/2" appearance="fill">
             <mat-label>TC</mat-label>
-            <input [(ngModel)]="tc" name="tc" type="number" min="10000000000" max="99999999999" matInput value="{{data.tc}}">
+            <input [(ngModel)]="tc" name="tc" type="number" min="10000000000" max="99999999999" maxlength="15" matInput value="{{data.tc}}">
         </mat-form-field>
         <div class="flex"> 
             <button mat-button class="bg-amber-400" type="submit">Güncelle</button>

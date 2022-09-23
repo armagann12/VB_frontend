@@ -18,15 +18,15 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { KurumFaturaComponent } from './components/kurum_components/kurum-fatura/kurum-fatura.component';
 import { KurumUserComponent } from './components/kurum_components/kurum-user/kurum-user.component';
 import { MatCardModule } from '@angular/material/card';
-import {MatInputModule} from '@angular/material/input';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatDividerModule} from '@angular/material/divider';
-import {MatListModule} from '@angular/material/list';
-import {MatTableModule} from '@angular/material/table';
-import {MatButtonToggleModule} from '@angular/material/button-toggle';
-import {MatSelectModule} from '@angular/material/select';
-import {MatIconModule} from '@angular/material/icon';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatListModule } from '@angular/material/list';
+import { MatTableModule } from '@angular/material/table';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatSelectModule } from '@angular/material/select';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDialogModule } from '@angular/material/dialog';
 import { UserFaturaDialogComponent } from './components/user_components/user-fatura-dialog/user-fatura-dialog.component';
 import { UserKurumDialogComponent } from './components/user_components/user-kurum-dialog/user-kurum-dialog.component';
 import { KurumFaturaDialogComponent } from './components/kurum_components/kurum-fatura-dialog/kurum-fatura-dialog.component';
@@ -41,6 +41,7 @@ import { UserCardComponent } from './components/user_components/user-card/user-c
 import { UserCardDialogAddComponent } from './components/user_components/user-card-dialog-add/user-card-dialog-add.component';
 import { UserCardDialogDeleteComponent } from './components/user_components/user-card-dialog-delete/user-card-dialog-delete.component';
 import { UserCardDialogMoneyComponent } from './components/user_components/user-card-dialog-money/user-card-dialog-money.component';
+import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
 
 
 
@@ -68,8 +69,8 @@ import { UserCardDialogMoneyComponent } from './components/user_components/user-
     UserCardDialogAddComponent,
     UserCardDialogDeleteComponent,
     UserCardDialogMoneyComponent,
-    
-    
+
+
   ],
   imports: [
     BrowserModule,
@@ -93,7 +94,9 @@ import { UserCardDialogMoneyComponent } from './components/user_components/user-
     ToastrModule.forRoot(),
     MatPaginatorModule
   ],
-  providers: [],
+  providers: [
+    { provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/services/auth.service';
@@ -24,6 +24,13 @@ export class RegisterComponent implements OnInit {
   isUser: boolean = true;
   rateControl: any
 
+  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
+  kurumEmailFormControl = new FormControl('', [Validators.required, Validators.email]);
+  tcFormControl = new FormControl('', [Validators.required, Validators.min(10000000000), Validators.max(99999999999)]);
+  firstNameFormControl = new FormControl('', [Validators.required, Validators.maxLength(15)]);
+  lastNameFormControl = new FormControl('', [Validators.required, Validators.maxLength(15)]);
+  passwordFormControl = new FormControl('', [Validators.required,  Validators.maxLength(15)]);
+  kurumPasswordFormControl = new FormControl('', [Validators.required,  Validators.maxLength(15)]);
 
   constructor(private router: Router, private authService: AuthService, private toastr: ToastrService) { }
 
@@ -37,6 +44,7 @@ export class RegisterComponent implements OnInit {
 
 
   onUserSubmit() {
+
     this.authService.userRegister(this.userRegisterMail,
       this.userRegisterPassword,
       this.firstName,
