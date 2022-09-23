@@ -1,4 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { UserService } from 'src/app/services/user.service';
 
@@ -11,18 +12,20 @@ export class UserCardDialogMoneyComponent implements OnInit {
   money: any = 0;
 
   constructor(public dialogRef: MatDialogRef<UserCardDialogMoneyComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any, private userService: UserService) { }
+    @Inject(MAT_DIALOG_DATA) public data: any, private userService: UserService, private fb: FormBuilder) { 
+    }
 
   ngOnInit(): void {
+    
   }
 
-  moneyCard(id:any){
-    
-    if(this.money > 0){
-      this.userService.uploadMoneyToCard(id, parseInt(this.money)).subscribe((res) =>{
-  
+  moneyCard(id: any) {
+
+    if (this.money > 0) {
+      this.userService.uploadMoneyToCard(id, parseInt(this.money)).subscribe((res) => {
+
       })
-    }else{
+    } else {
       this.data.balance = undefined
     }
   }

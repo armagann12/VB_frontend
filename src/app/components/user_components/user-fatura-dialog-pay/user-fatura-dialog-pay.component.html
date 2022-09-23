@@ -14,11 +14,11 @@
 </div>
 
 <div *ngIf="chosenCard === undefined">
-    <h1 mat-dialog-title class="text-center">Ödemeyi Yapmak isteiğin <br> kredi kartını seç</h1>
+    <h2 mat-dialog-title class="text-center ">Ödemeyi yapmak istediğin <br> kredi kartını seç</h2>
     <div class="flex justify-center" *ngFor="let card of myCards">
         <mat-card (click)="chooseCard(card.id)" class="max-w-xs mt-2 bg-slate-200 hover:shadow-xl cursor-pointer">{{card.bankName}} <br class="text-xs"> {{card.number}} </mat-card>
     </div>
-    <div class="flex justify-between">
+    <div class="flex justify-between mt-3">
         <div mat-dialog-actions>
             <button class="bg-slate-400" mat-button [mat-dialog-close]="" cdkFocusInitial>İptal</button>
         </div>
