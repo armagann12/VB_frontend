@@ -5,19 +5,23 @@
     </button>
 </mat-toolbar>
 
-<div *ngIf="myCards.length < 2">
+<div *ngIf="myCards.length < 2" class="ml-6 mt-6">
     <button (click)="addCard()" mat-button class="bg-blue-600">Kart ekle</button>
 </div>
 
 
 <div *ngFor="let card of myCards">
-    <mat-card class="max-w-xs bg-yellow-100 mt-2">
+    <mat-card class="max-w-xs bg-yellow-100 mt-6 ml-6">
         <mat-card-title>{{card.bankName}}</mat-card-title>
         <mat-card-subtitle>{{card.userName}}</mat-card-subtitle>
         <mat-card-content>
-            <p>{{card.number}}</p> 
-            <p>validDate: {{card.validDate}}</p>
-            <p>CVC: {{card.cvc}}</p>
+            <h1 class="text-lg font-medium mb-3">{{card.number}}</h1> 
+            <div class="flex">
+                <p class="font-medium">Valid Date: </p> <p class="ml-2 text-red-500">{{card.validDate}}</p>
+            </div>
+            <div class="flex">
+                <p class="font-medium">CVC:</p> <p class="ml-2 text-red-500">{{card.cvc}}</p>
+            </div>
         </mat-card-content>
         <mat-card-actions>
             <button (click)="deleteCard(card.id)" mat-button class="bg-red-500">Sil</button>
