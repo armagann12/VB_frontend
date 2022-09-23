@@ -96,21 +96,28 @@
                         <mat-label>
                             Kurum Adı
                         </mat-label>
-                        <input matInput required type="text" onkeydown="return /[a-z]/i.test(event.key)" minlength="2"
-                            maxlength="25" name="name" id="name" placeholder="Vakıfbank T.A.O." [(ngModel)]="name">
+                        <input matInput [formControl]="passwordFormControl" required type="text"
+                            onkeydown="return /[a-z]/i.test(event.key)" minlength="1" maxlength="25" name="name"
+                            id="name" placeholder="Vakıfbank T.A.O." [(ngModel)]="name">
+                        <mat-error *ngIf="kurumNameFormControl.hasError('required')">
+                            Kurum Adı alanı <strong>gereklidir</strong>
+                        </mat-error>
                     </mat-form-field>
                     <mat-form-field>
                         <mat-label>
                             Kurum Detayı
                         </mat-label>
-                        <input matInput required type="text" onkeydown="return /[a-z]/i.test(event.key)" minlength="2"
+                        <input matInput [formControl]="kurumDetailFormControl" required type="text" onkeydown="return /[a-z]/i.test(event.key)" minlength="1"
                             maxlength="25" name="detail" id="detail" placeholder="Bankacılık" [(ngModel)]="detail">
+                        <mat-error *ngIf="kurumDetailFormControl.hasError('required')">
+                            Kurum Detay alanı <strong>gereklidir</strong>
+                        </mat-error>
                     </mat-form-field>
                     <mat-form-field>
                         <mat-label>
                             Mail
                         </mat-label>
-                        <input matInput required type="email" [formControl]="kurumPasswordFormControl" minlength="10"
+                        <input matInput required type="email" [formControl]="kurumEmailFormControl" minlength="10"
                             maxlength="25" name="mail" id="kurumMail" placeholder="example@gmail.com"
                             [(ngModel)]="kurumRegisterMail">
                         <mat-error *ngIf="kurumEmailFormControl.hasError('email')">

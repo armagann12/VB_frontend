@@ -28,6 +28,8 @@ export class RegisterComponent implements OnInit {
   kurumEmailFormControl = new FormControl('', [Validators.required, Validators.email]);
   tcFormControl = new FormControl('', [Validators.required, Validators.min(10000000000), Validators.max(99999999999)]);
   firstNameFormControl = new FormControl('', [Validators.required, Validators.maxLength(15)]);
+  kurumNameFormControl = new FormControl('', [Validators.required, Validators.maxLength(15)]);
+  kurumDetailFormControl = new FormControl('', [Validators.required, Validators.maxLength(25)]);
   lastNameFormControl = new FormControl('', [Validators.required, Validators.maxLength(15)]);
   passwordFormControl = new FormControl('', [Validators.required,  Validators.maxLength(15)]);
   kurumPasswordFormControl = new FormControl('', [Validators.required,  Validators.maxLength(15)]);
