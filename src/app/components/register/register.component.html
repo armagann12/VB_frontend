@@ -17,14 +17,14 @@
                         <mat-label>
                             Ad
                         </mat-label>
-                        <input matInput required minlength="3" maxlength="15" type="text" name="firstName" id="firstName" placeholder=""
+                        <input matInput required onkeydown="return /[a-z]/i.test(event.key)" minlength="2" maxlength="15" type="text" name="firstName" id="firstName" placeholder=""
                             [(ngModel)]="firstName">
                     </mat-form-field>
                     <mat-form-field>
                         <mat-label>
                             Soyad
                         </mat-label>
-                        <input matInput required minlength="3" maxlength="15" type="text" name="lastName" id="lastName" placeholder=""
+                        <input matInput onkeydown="return /[a-z]/i.test(event.key)" required minlength="2" maxlength="15" type="text" name="lastName" id="lastName" placeholder=""
                             [(ngModel)]="lastName">
                     </mat-form-field>
                     <mat-form-field>
@@ -74,13 +74,13 @@
                         <mat-label>
                             Kurum Adı
                         </mat-label>
-                        <input matInput required type="text" minlength="3" maxlength="25" name="name" id="name" placeholder="Vakıfbank T.A.O." [(ngModel)]="name">
+                        <input matInput required type="text" onkeydown="return /[a-z]/i.test(event.key)" minlength="2" maxlength="25" name="name" id="name" placeholder="Vakıfbank T.A.O." [(ngModel)]="name">
                     </mat-form-field>
                     <mat-form-field>
                         <mat-label>
                             Kurum Detayı
                         </mat-label>
-                        <input matInput required type="text" minlength="3" maxlength="25" name="detail" id="detail" placeholder="Bankacılık" [(ngModel)]="detail">
+                        <input matInput required type="text" onkeydown="return /[a-z]/i.test(event.key)" minlength="2" maxlength="25" name="detail" id="detail" placeholder="Bankacılık" [(ngModel)]="detail">
                     </mat-form-field>
                     <mat-form-field>
                         <mat-label>

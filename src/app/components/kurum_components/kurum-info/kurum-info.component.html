@@ -9,12 +9,12 @@
         <h1 class="text-xl">Ad:</h1>
         <mat-form-field class="w-1/2" appearance="fill">
             <mat-label>Ad</mat-label>
-            <input [(ngModel)]="name" name="firstName" minlength="3" maxlength="20" matInput  value="{{data.name}}">
+            <input [(ngModel)]="name" onkeydown="return /[a-z]/i.test(event.key)" name="firstName" minlength="3" maxlength="20" matInput  value="{{data.name}}">
         </mat-form-field>
         <h1 class="text-xl">Detay:</h1>
         <mat-form-field class="w-1/2" appearance="fill">
             <mat-label>Detay</mat-label>
-            <input [(ngModel)]="detail" name="lastName" minlength="3" maxlength="50" matInput value="{{data.detail}}">
+            <input [(ngModel)]="detail" onkeydown="return /[a-z]/i.test(event.key)" name="lastName" minlength="3" maxlength="50" matInput value="{{data.detail}}">
         </mat-form-field>
         <h1 class="text-xl">Mail:</h1>
         <mat-form-field class="w-1/2" appearance="fill">
