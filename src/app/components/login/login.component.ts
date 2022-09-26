@@ -51,6 +51,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['user']);
       }, (error) => {
         console.log(error)
+        console.log(error.error)
         if (error.error.length > 30) {
           this.toastr.error(`${JSON.parse(error.error).title}`, `Hata`, { timeOut: 3000 })
         } else {

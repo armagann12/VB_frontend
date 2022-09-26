@@ -31,8 +31,8 @@ export class RegisterComponent implements OnInit {
   kurumNameFormControl = new FormControl('', [Validators.required, Validators.maxLength(15)]);
   kurumDetailFormControl = new FormControl('', [Validators.required, Validators.maxLength(25)]);
   lastNameFormControl = new FormControl('', [Validators.required, Validators.maxLength(15)]);
-  passwordFormControl = new FormControl('', [Validators.required,  Validators.maxLength(15)]);
-  kurumPasswordFormControl = new FormControl('', [Validators.required,  Validators.maxLength(15)]);
+  passwordFormControl = new FormControl('', [Validators.required, Validators.maxLength(15)]);
+  kurumPasswordFormControl = new FormControl('', [Validators.required, Validators.maxLength(15)]);
 
   constructor(private router: Router, private authService: AuthService, private toastr: ToastrService) { }
 
@@ -57,10 +57,14 @@ export class RegisterComponent implements OnInit {
       this.router.navigate(['login']);
     }, ((err) => {
       console.log(err)
+      console.log(err.error.includes("duplicate key"))
+      console.log(err.error.length > 30)
       if (err.error.length > 30) {
-        this.toastr.error(`${JSON.parse(err.error).title}`, `Hata`, { timeOut: 3000 })
-      } else if (err.error.includes("duplicate key")) {
-        this.toastr.error(`Duplicate Key`, `Hata`, { timeOut: 3000 })
+        if (err.error.includes("duplicate key")) {
+          this.toastr.error(`Duplicate Key`, `Hata`, { timeOut: 3000 })
+        } else {
+          this.toastr.error(`${JSON.parse(err.error).title}`, `Hata`, { timeOut: 3000 })
+        }
       } else {
         this.toastr.error(`${err.error}`, "Hata", { timeOut: 3000 })
       }
