@@ -92,7 +92,8 @@ import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/materi
     MatIconModule,
     MatDialogModule,
     ToastrModule.forRoot(),
-    MatPaginatorModule
+    MatPaginatorModule,
+    ReactiveFormsModule.withConfig({warnOnNgModelWithFormControl: 'never'})
   ],
   providers: [
     { provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher }
