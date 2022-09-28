@@ -41,7 +41,7 @@
                         <mat-label>
                             TC Kimlik Numarası
                         </mat-label>
-                        <input matInput [formControl]="tcFormControl" required type="number" min="10000000000"
+                        <input matInput [formControl]="tcFormControl" required type="number" oninput="validity.valid||(value='');" min="1"
                             max="99999999999" name="tc" id="tc" placeholder="" [(ngModel)]="tc">
                         <mat-error *ngIf="tcFormControl.hasError('required')">
                             TC Kimlik <strong>11</strong> Haneli Olmalıdır
