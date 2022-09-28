@@ -96,8 +96,8 @@
                         <mat-label>
                             Kurum Adı
                         </mat-label>
-                        <input matInput [formControl]="passwordFormControl" required type="text"
-                            onkeydown="return /[a-z]/i.test(event.key)" minlength="1" maxlength="25" name="name"
+                        <input matInput [formControl]="kurumNameFormControl" required type="text"
+                            onkeydown="return /^[A-Za-z ]+$/i.test(event.key)" minlength="1" maxlength="25" name="name"
                             id="name" placeholder="Vakıfbank T.A.O." [(ngModel)]="name">
                         <mat-error *ngIf="kurumNameFormControl.hasError('required')">
                             Kurum Adı alanı <strong>gereklidir</strong>
@@ -107,7 +107,7 @@
                         <mat-label>
                             Kurum Detayı
                         </mat-label>
-                        <input matInput [formControl]="kurumDetailFormControl" required type="text" onkeydown="return /[a-z]/i.test(event.key)" minlength="1"
+                        <input matInput [formControl]="kurumDetailFormControl" required type="text" onkeydown="return /^[A-Za-z ]+$/i.test(event.key)" minlength="1"
                             maxlength="25" name="detail" id="detail" placeholder="Bankacılık" [(ngModel)]="detail">
                         <mat-error *ngIf="kurumDetailFormControl.hasError('required')">
                             Kurum Detay alanı <strong>gereklidir</strong>
